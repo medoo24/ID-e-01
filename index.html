@@ -1,0 +1,3171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="narrative">
+  <meta name="design-style" content="neon_noir">
+  <title>الملف 99 | The Forensic Files — الحلقة 1: أسطورة الجثة المجهولة والتفحم الكامل</title>
+
+  <!-- Google Fonts: Cairo, IBM Plex Sans Arabic, Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+
+      /* Page and surfaces: hierarchy by lightness */
+      --background: #0a0a12;
+      --surface-container-low: #111118;
+      --surface-container: #141422;
+      --surface-container-high: #1e1e30;
+      --surface-card-ramy: #0d1a24;
+      --surface-card-yehia: #200d1c;
+
+      /* Text */
+      --on-surface: #e8e0f0;
+      --on-surface-variant: #a098b0;
+      --on-surface-muted: #726884;
+
+      /* Lines */
+      --outline: #5a5068;
+      --outline-variant: #302840;
+
+      /* Neon accents */
+      --primary: #ff2d78;           /* Dr. Yehia / Forensic Pathologist / Magenta */
+      --on-primary: #1a0010;
+      --primary-container: #b3004e;
+      --on-primary-container: #ffe0ec;
+
+      --secondary: #00ffcc;         /* Ramy / Investigative Journalist / Cyan */
+      --on-secondary: #001f18;
+      --secondary-container: #00775f;
+      --on-secondary-container: #d6fff5;
+
+      --tertiary: #ffe04a;          /* Buzzwords, MCQs, Memory Anchors / Yellow */
+      --on-tertiary: #1f1b00;
+
+      --error: #ff4444;
+      --on-error: #1a0000;
+      --positive: #00e676;
+      --warning: #ffb300;
+      --focus: #00ffcc;
+
+      /* Data series & Hosts */
+      --data-1: #ff2d78;
+      --data-2: #00ffcc;
+      --data-3: #ffe04a;
+      --data-4: #b388ff;
+      --data-context: #6e6680;
+
+      /* Fonts */
+      --font-headline: 'Cairo', sans-serif;
+      --font-body: 'IBM Plex Sans Arabic', sans-serif;
+      --font-label: 'Space Mono', 'Cairo', monospace;
+
+      /* Typography Scale */
+      --display-size: clamp(2.2rem, 1.6rem + 2.5vw, 3.8rem);
+      --headline-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.4rem);
+      --subhead-size: clamp(1.15rem, 1rem + 0.5vw, 1.35rem);
+      --body-size: clamp(1rem, 0.96rem + 0.25vw, 1.125rem);
+      --label-size: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+
+      /* Shape */
+      --rounded: 0.25rem;
+      --rounded-lg: 0.5rem;
+      --rounded-full: 0.75rem;
+
+      /* Neon Noir Style Effects */
+      --glow-text: 0 0 8px currentColor;
+      --glow-primary: 0 0 16px color-mix(in srgb, var(--primary) 40%, transparent);
+      --glow-secondary: 0 0 16px color-mix(in srgb, var(--secondary) 35%, transparent);
+      --glow-tertiary: 0 0 14px color-mix(in srgb, var(--tertiary) 35%, transparent);
+      --neon-border-primary: 1px solid color-mix(in srgb, var(--primary) 35%, transparent);
+      --neon-border-secondary: 1px solid color-mix(in srgb, var(--secondary) 35%, transparent);
+      --neon-border-tertiary: 1px solid color-mix(in srgb, var(--tertiary) 35%, transparent);
+      --neon-inset-primary: inset 0 0 14px color-mix(in srgb, var(--primary) 12%, transparent);
+      --neon-inset-secondary: inset 0 0 14px color-mix(in srgb, var(--secondary) 12%, transparent);
+      --scanlines: repeating-linear-gradient(to bottom, transparent 0 3px, color-mix(in srgb, var(--on-surface) 3%, transparent) 3px 4px);
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      background-image: var(--scanlines);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.65;
+      direction: rtl;
+      text-align: right;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    bdi {
+      direction: ltr;
+      unicode-bidi: isolate;
+      font-family: var(--font-label);
+      font-size: 0.95em;
+    }
+
+    /* Layout structure */
+    .studio-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: var(--space-md) var(--space-lg) var(--space-3xl);
+    }
+
+    /* Studio Header & Masthead */
+    .studio-header {
+      border-bottom: 1px solid var(--outline-variant);
+      padding-bottom: var(--space-xl);
+      margin-bottom: var(--space-xl);
+    }
+
+    .broadcast-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      margin-bottom: var(--space-lg);
+    }
+
+    .badge-on-air {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--rounded);
+      background: color-mix(in srgb, var(--primary) 18%, transparent);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      box-shadow: var(--glow-primary);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 6px var(--primary);
+      animation: pulseGlow 1.8s infinite var(--ease-in-out);
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.8); }
+    }
+
+    .studio-specs {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+    }
+
+    .spec-item {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .title-area {
+      margin-top: var(--space-md);
+    }
+
+    .kicker-tag {
+      font-family: var(--font-label);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--secondary);
+      text-shadow: var(--glow-text);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-xs);
+    }
+
+    .main-title {
+      font-family: var(--font-headline);
+      font-size: var(--display-size);
+      font-weight: 900;
+      line-height: 1.15;
+      margin: 0 0 var(--space-sm);
+      color: var(--on-surface);
+    }
+
+    .main-title span.glow-accent {
+      color: var(--primary);
+      text-shadow: var(--glow-text);
+    }
+
+    .episode-subtitle {
+      font-size: var(--subhead-size);
+      color: var(--on-surface-variant);
+      max-width: 85ch;
+      margin: 0;
+    }
+
+    /* Host Profiles Banner */
+    .hosts-dossier {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+
+    .host-card {
+      background: var(--surface-container);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      transition: border-color var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);
+    }
+
+    .host-card.ramy {
+      border: var(--neon-border-secondary);
+      box-shadow: var(--neon-inset-secondary);
+    }
+
+    .host-card.ramy:hover {
+      box-shadow: var(--glow-secondary);
+    }
+
+    .host-card.yehia {
+      border: var(--neon-border-primary);
+      box-shadow: var(--neon-inset-primary);
+    }
+
+    .host-card.yehia:hover {
+      box-shadow: var(--glow-primary);
+    }
+
+    .host-avatar {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 2px solid currentColor;
+    }
+
+    .host-card.ramy .host-avatar {
+      background: color-mix(in srgb, var(--secondary) 15%, transparent);
+      color: var(--secondary);
+      box-shadow: 0 0 12px color-mix(in srgb, var(--secondary) 30%, transparent);
+    }
+
+    .host-card.yehia .host-avatar {
+      background: color-mix(in srgb, var(--primary) 15%, transparent);
+      color: var(--primary);
+      box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 30%, transparent);
+    }
+
+    .host-info h3 {
+      font-family: var(--font-headline);
+      font-size: 1.15rem;
+      margin: 0 0 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .host-card.ramy h3 { color: var(--secondary); }
+    .host-card.yehia h3 { color: var(--primary); }
+
+    .host-role {
+      font-size: 0.85rem;
+      color: var(--on-surface-variant);
+      margin: 0;
+    }
+
+    .host-tagline {
+      font-size: 0.8rem;
+      color: var(--on-surface-muted);
+      margin: 0.2rem 0 0;
+      font-style: italic;
+    }
+
+    /* Main Studio Grid: Prompter & Controls on Left/Right */
+    .studio-workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 380px;
+      gap: var(--space-xl);
+      align-items: start;
+      margin-top: var(--space-2xl);
+    }
+
+    @media (max-width: 1040px) {
+      .studio-workspace {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Teleprompter Control Deck */
+    .teleprompter-toolbar {
+      position: sticky;
+      top: var(--space-md);
+      z-index: 30;
+      background: color-mix(in srgb, var(--surface-container-high) 90%, transparent);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--outline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      flex-wrap: wrap;
+    }
+
+    .btn-control {
+      background: var(--surface-container);
+      color: var(--on-surface);
+      border: 1px solid var(--outline);
+      border-radius: var(--rounded);
+      padding: 0.45rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      cursor: pointer;
+      transition: all var(--dur-short) var(--ease-out);
+    }
+
+    .btn-control:hover {
+      border-color: var(--focus);
+      color: var(--focus);
+      box-shadow: 0 0 10px color-mix(in srgb, var(--focus) 25%, transparent);
+    }
+
+    .btn-control:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .btn-control.active {
+      background: color-mix(in srgb, var(--secondary) 20%, transparent);
+      border-color: var(--secondary);
+      color: var(--secondary);
+      box-shadow: var(--glow-secondary);
+    }
+
+    .btn-control.primary-active {
+      background: color-mix(in srgb, var(--primary) 20%, transparent);
+      border-color: var(--primary);
+      color: var(--primary);
+      box-shadow: var(--glow-primary);
+    }
+
+    .filter-select {
+      background: var(--surface-container);
+      color: var(--on-surface);
+      border: 1px solid var(--outline);
+      border-radius: var(--rounded);
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .filter-select:focus-visible {
+      outline: 2px solid var(--focus);
+    }
+
+    .prompter-progress-track {
+      width: 100%;
+      height: 4px;
+      background: var(--outline-variant);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 0.2rem;
+    }
+
+    .prompter-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to left, var(--primary), var(--secondary));
+      transition: width 0.1s linear;
+    }
+
+    /* Script Scene Navigation Bar */
+    .scene-navigator {
+      display: flex;
+      gap: var(--space-xs);
+      overflow-x: auto;
+      padding: var(--space-xs) 0;
+      margin-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--outline-variant);
+      scrollbar-width: thin;
+    }
+
+    .scene-chip {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      color: var(--on-surface-variant);
+      padding: 0.35rem 0.75rem;
+      font-size: 0.78rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all var(--dur-short) var(--ease-out);
+      font-family: var(--font-label);
+    }
+
+    .scene-chip:hover, .scene-chip.active {
+      background: var(--surface-container-high);
+      border-color: var(--secondary);
+      color: var(--secondary);
+      text-shadow: var(--glow-text);
+    }
+
+    /* Script Stage / Dialogue Feed */
+    .script-feed {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .scene-header-card {
+      background: linear-gradient(135deg, var(--surface-container) 0%, var(--surface-container-low) 100%);
+      border-right: 4px solid var(--tertiary);
+      border-top: 1px solid var(--outline-variant);
+      border-bottom: 1px solid var(--outline-variant);
+      border-left: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+      margin: var(--space-md) 0 var(--space-xs);
+    }
+
+    .scene-number {
+      font-family: var(--font-label);
+      font-size: 0.78rem;
+      color: var(--tertiary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .scene-title {
+      font-family: var(--font-headline);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--on-surface);
+      margin: 0 0 var(--space-xs);
+    }
+
+    .scene-synopsis {
+      font-size: 0.9rem;
+      color: var(--on-surface-variant);
+      margin: 0;
+    }
+
+    /* Dialogue Cards */
+    .dialogue-card {
+      position: relative;
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out);
+    }
+
+    .dialogue-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .dialogue-card.ramy {
+      background: var(--surface-card-ramy);
+      border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+      box-shadow: inset 0 0 15px color-mix(in srgb, var(--secondary) 5%, transparent);
+      border-right: 4px solid var(--secondary);
+    }
+
+    .dialogue-card.ramy:hover {
+      box-shadow: 0 4px 20px color-mix(in srgb, var(--secondary) 15%, transparent);
+    }
+
+    .dialogue-card.yehia {
+      background: var(--surface-card-yehia);
+      border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+      box-shadow: inset 0 0 15px color-mix(in srgb, var(--primary) 5%, transparent);
+      border-right: 4px solid var(--primary);
+    }
+
+    .dialogue-card.yehia:hover {
+      box-shadow: 0 4px 20px color-mix(in srgb, var(--primary) 15%, transparent);
+    }
+
+    .dialogue-card.stage-cue {
+      background: var(--surface-container-low);
+      border: 1px dashed var(--outline);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      font-style: italic;
+      color: var(--on-surface-muted);
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .dialogue-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-sm);
+      padding-bottom: var(--space-xs);
+      border-bottom: 1px solid color-mix(in srgb, var(--outline-variant) 80%, transparent);
+    }
+
+    .speaker-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .speaker-avatar-mini {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      border: 1px solid currentColor;
+    }
+
+    .dialogue-card.ramy .speaker-avatar-mini {
+      color: var(--secondary);
+      background: color-mix(in srgb, var(--secondary) 15%, transparent);
+    }
+
+    .dialogue-card.yehia .speaker-avatar-mini {
+      color: var(--primary);
+      background: color-mix(in srgb, var(--primary) 15%, transparent);
+    }
+
+    .speaker-name {
+      font-family: var(--font-headline);
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .dialogue-card.ramy .speaker-name { color: var(--secondary); }
+    .dialogue-card.yehia .speaker-name { color: var(--primary); }
+
+    .stage-direction {
+      font-size: 0.82rem;
+      color: var(--on-surface-variant);
+      font-style: italic;
+    }
+
+    .timecode-tag {
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      color: var(--on-surface-muted);
+    }
+
+    .speech-content {
+      font-size: var(--body-size);
+      line-height: 1.8;
+      color: var(--on-surface);
+    }
+
+    .speech-content p {
+      margin: 0 0 var(--space-sm);
+    }
+
+    .speech-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Buzzwords & Interactive Spans */
+    .buzzword {
+      display: inline-block;
+      padding: 0.1rem 0.45rem;
+      margin: 0 0.15rem;
+      border-radius: var(--rounded);
+      background: color-mix(in srgb, var(--tertiary) 15%, transparent);
+      color: var(--tertiary);
+      border: 1px solid color-mix(in srgb, var(--tertiary) 45%, transparent);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--dur-micro) var(--ease-out);
+      text-decoration: none;
+    }
+
+    .buzzword:hover {
+      background: color-mix(in srgb, var(--tertiary) 28%, transparent);
+      border-color: var(--tertiary);
+      box-shadow: var(--glow-tertiary);
+      transform: scale(1.02);
+    }
+
+    .buzzword.mcq-trigger {
+      background: color-mix(in srgb, var(--primary) 18%, transparent);
+      color: #ff8ab2;
+      border-color: color-mix(in srgb, var(--primary) 50%, transparent);
+    }
+
+    .buzzword.mcq-trigger:hover {
+      background: color-mix(in srgb, var(--primary) 32%, transparent);
+      box-shadow: var(--glow-primary);
+    }
+
+    .buzzword.memory-trigger {
+      background: color-mix(in srgb, var(--secondary) 18%, transparent);
+      color: #79ffe1;
+      border-color: color-mix(in srgb, var(--secondary) 50%, transparent);
+    }
+
+    .buzzword.memory-trigger:hover {
+      background: color-mix(in srgb, var(--secondary) 32%, transparent);
+      box-shadow: var(--glow-secondary);
+    }
+
+    /* Embedded Study Callout inside Cards */
+    .dialogue-study-callout {
+      margin-top: var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      font-size: 0.88rem;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+
+    .callout-icon {
+      flex-shrink: 0;
+      color: var(--tertiary);
+      margin-top: 2px;
+    }
+
+    .callout-text strong {
+      color: var(--tertiary);
+    }
+
+    /* Interactive Side Deck: Buzzwords, Memory Anchor, Quick MCQs */
+    .studio-sidebar {
+      position: sticky;
+      top: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .side-panel {
+      background: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .side-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-xs);
+      border-bottom: 1px solid var(--outline-variant);
+    }
+
+    .side-panel-title {
+      font-family: var(--font-headline);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      color: var(--on-surface);
+    }
+
+    /* Buzzword Detail Box / Popover */
+    .buzzword-inspector {
+      background: var(--surface-container-high);
+      border: 1px solid var(--tertiary);
+      box-shadow: var(--glow-tertiary);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      margin-bottom: var(--space-md);
+      animation: fadeIn var(--dur-short) var(--ease-out);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .inspector-badge {
+      display: inline-block;
+      font-family: var(--font-label);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--rounded);
+      background: color-mix(in srgb, var(--tertiary) 20%, transparent);
+      color: var(--tertiary);
+      margin-bottom: var(--space-xs);
+    }
+
+    .inspector-title {
+      font-family: var(--font-headline);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--on-surface);
+      margin: 0 0 var(--space-xs);
+    }
+
+    .inspector-def {
+      font-size: 0.88rem;
+      color: var(--on-surface-variant);
+      margin-bottom: var(--space-sm);
+    }
+
+    .inspector-rule-box {
+      background: color-mix(in srgb, var(--primary) 12%, transparent);
+      border-right: 3px solid var(--primary);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--rounded);
+      margin-bottom: var(--space-sm);
+      font-size: 0.84rem;
+    }
+
+    .inspector-rule-box strong {
+      color: var(--primary);
+    }
+
+    .inspector-memory-box {
+      background: color-mix(in srgb, var(--secondary) 12%, transparent);
+      border-right: 3px solid var(--secondary);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--rounded);
+      font-size: 0.84rem;
+    }
+
+    .inspector-memory-box strong {
+      color: var(--secondary);
+    }
+
+    /* Soundboard simulation deck */
+    .soundboard-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-xs);
+      margin-top: var(--space-sm);
+    }
+
+    .btn-sound {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      padding: 0.45rem 0.6rem;
+      color: var(--on-surface-variant);
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      cursor: pointer;
+      transition: all var(--dur-short) var(--ease-out);
+    }
+
+    .btn-sound:hover {
+      background: var(--surface-container-high);
+      border-color: var(--focus);
+      color: var(--focus);
+    }
+
+    .btn-sound.is-playing {
+      border-color: var(--primary);
+      color: var(--primary);
+      box-shadow: 0 0 10px color-mix(in srgb, var(--primary) 30%, transparent);
+    }
+
+    /* Quick Memory Peg Interactive Matrix */
+    .memory-peg-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      max-height: 280px;
+      overflow-y: auto;
+      padding-left: var(--space-xs);
+      scrollbar-width: thin;
+    }
+
+    .peg-item {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      padding: var(--space-xs) var(--space-sm);
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all var(--dur-short) var(--ease-out);
+    }
+
+    .peg-item:hover, .peg-item.active {
+      border-color: var(--secondary);
+      background: var(--surface-container-high);
+      color: var(--secondary);
+    }
+
+    .peg-age {
+      font-family: var(--font-label);
+      font-weight: 700;
+      color: var(--tertiary);
+    }
+
+    /* Memory Anchor Grand Gym (Section at the bottom) */
+    .memory-gym-section {
+      margin-top: var(--space-3xl);
+      border-top: 2px solid var(--outline-variant);
+      padding-top: var(--space-2xl);
+    }
+
+    .gym-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto var(--space-2xl);
+    }
+
+    .gym-header h2 {
+      font-family: var(--font-headline);
+      font-size: var(--headline-size);
+      font-weight: 800;
+      margin: 0 0 var(--space-xs);
+      color: var(--on-surface);
+    }
+
+    .gym-header p {
+      color: var(--on-surface-variant);
+      font-size: var(--subhead-size);
+      margin: 0;
+    }
+
+    .gym-tabs {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-xl);
+    }
+
+    .gym-tab-btn {
+      background: var(--surface-container);
+      color: var(--on-surface-variant);
+      border: 1px solid var(--outline);
+      border-radius: var(--rounded-lg);
+      padding: 0.6rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      transition: all var(--dur-short) var(--ease-out);
+    }
+
+    .gym-tab-btn:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    .gym-tab-btn.active {
+      background: color-mix(in srgb, var(--primary) 20%, transparent);
+      border-color: var(--primary);
+      color: var(--on-surface);
+      box-shadow: var(--glow-primary);
+    }
+
+    .gym-tab-content {
+      display: none;
+      background: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .gym-tab-content.active {
+      display: block;
+      animation: fadeIn var(--dur-short) var(--ease-out);
+    }
+
+    /* Body Pegs Interactive Model */
+    .body-pegs-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    @media (max-width: 820px) {
+      .body-pegs-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .body-visual-container {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .body-svg-frame {
+      max-width: 260px;
+      width: 100%;
+      height: auto;
+    }
+
+    .body-hotspot {
+      cursor: pointer;
+      transition: fill var(--dur-short) var(--ease-out), filter var(--dur-short) var(--ease-out);
+    }
+
+    .body-hotspot:hover, .body-hotspot.selected {
+      fill: var(--primary) !important;
+      filter: drop-shadow(0 0 8px var(--primary));
+    }
+
+    .body-detail-card {
+      background: var(--surface-container-high);
+      border: 1px solid var(--primary);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--glow-primary);
+    }
+
+    .body-detail-card h3 {
+      font-family: var(--font-headline);
+      font-size: 1.4rem;
+      margin: 0 0 var(--space-xs);
+      color: var(--primary);
+    }
+
+    /* Paternity Exclusion Interactive Tool */
+    .paternity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .paternity-input-group {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+    }
+
+    .paternity-input-group label {
+      display: block;
+      font-family: var(--font-headline);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      margin-bottom: var(--space-xs);
+    }
+
+    .paternity-select {
+      width: 100%;
+      background: var(--surface-container);
+      color: var(--on-surface);
+      border: 1px solid var(--outline);
+      border-radius: var(--rounded);
+      padding: 0.5rem 0.8rem;
+      font-size: 0.95rem;
+      font-family: var(--font-label);
+      margin-bottom: var(--space-sm);
+    }
+
+    .paternity-result-box {
+      background: var(--surface-container-high);
+      border: 1px solid var(--secondary);
+      box-shadow: var(--glow-secondary);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      grid-column: 1 / -1;
+    }
+
+    .rule-pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-top: var(--space-xs);
+    }
+
+    .rule-pill {
+      background: color-mix(in srgb, var(--tertiary) 15%, transparent);
+      border: 1px solid var(--tertiary);
+      color: var(--tertiary);
+      border-radius: var(--rounded);
+      padding: 0.2rem 0.6rem;
+      font-size: 0.82rem;
+      font-family: var(--font-label);
+    }
+
+    .rule-pill.impossible {
+      background: color-mix(in srgb, var(--error) 18%, transparent);
+      border-color: var(--error);
+      color: #ff9999;
+    }
+
+    .rule-pill.possible {
+      background: color-mix(in srgb, var(--positive) 18%, transparent);
+      border-color: var(--positive);
+      color: #99ffbb;
+    }
+
+    /* MCQ Challenge Quiz Component */
+    .mcq-card {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-lg);
+    }
+
+    .mcq-question {
+      font-family: var(--font-headline);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0 0 var(--space-md);
+      color: var(--on-surface);
+    }
+
+    .mcq-options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xs);
+    }
+
+    .mcq-option-btn {
+      background: var(--surface-container);
+      color: var(--on-surface);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      padding: 0.6rem var(--space-md);
+      text-align: right;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all var(--dur-short) var(--ease-out);
+    }
+
+    .mcq-option-btn:hover {
+      border-color: var(--focus);
+      background: var(--surface-container-high);
+    }
+
+    .mcq-option-btn.correct {
+      background: color-mix(in srgb, var(--positive) 20%, transparent);
+      border-color: var(--positive);
+      color: #bbfed3;
+      font-weight: 700;
+    }
+
+    .mcq-option-btn.incorrect {
+      background: color-mix(in srgb, var(--error) 20%, transparent);
+      border-color: var(--error);
+      color: #ffb3b3;
+    }
+
+    .mcq-explanation {
+      display: none;
+      margin-top: var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: color-mix(in srgb, var(--tertiary) 10%, transparent);
+      border-right: 3px solid var(--tertiary);
+      border-radius: var(--rounded);
+      font-size: 0.88rem;
+      color: var(--on-surface);
+    }
+
+    /* Footnotes and Credits */
+    .studio-footer {
+      margin-top: var(--space-3xl);
+      border-top: 1px solid var(--outline-variant);
+      padding-top: var(--space-lg);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-md);
+      color: var(--on-surface-muted);
+      font-size: 0.85rem;
+      font-family: var(--font-label);
+    }
+
+    /* Accessibility focus rings */
+    :focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Teleprompter reading highlight */
+    .dialogue-card.prompter-active {
+      outline: 2px solid var(--focus);
+      box-shadow: 0 0 25px color-mix(in srgb, var(--focus) 35%, transparent);
+      transform: scale(1.01);
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="studio-container">
+
+    <!-- Top Studio Masthead -->
+    <header class="studio-header">
+      <div class="broadcast-bar">
+        <div style="display: flex; align-items: center; gap: var(--space-md);">
+          <div class="badge-on-air">
+            <span class="pulse-dot"></span>
+            <span>بث مباشر | ON AIR</span>
+          </div>
+          <span style="font-family: var(--font-label); font-size: var(--label-size); color: var(--secondary);">
+            STUDIO 99 • FORENSIC AUDIO LAB
+          </span>
+        </div>
+
+        <div class="studio-specs">
+          <div class="spec-item">
+            <i data-lucide="mic" style="width: 14px; height: 14px; color: var(--secondary);"></i>
+            <span>ميكروفون 1: رامي</span>
+          </div>
+          <div class="spec-item">
+            <i data-lucide="stethoscope" style="width: 14px; height: 14px; color: var(--primary);"></i>
+            <span>ميكروفون 2: د. يحيى</span>
+          </div>
+          <div class="spec-item">
+            <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--tertiary);"></i>
+            <span id="elapsedTimer">00:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="title-area">
+        <div class="kicker-tag">
+          <i data-lucide="radio" style="width: 16px; height: 16px;"></i>
+          <span>بودكاست الملف 99 | THE FORENSIC FILES — الموسم الأول</span>
+        </div>
+        <h1 class="main-title">
+          الحلقة 1: أسطورة الجثة المجهولة و<span class="glow-accent">التفحم الكامل</span>
+        </h1>
+        <p class="episode-subtitle">
+          مخطوط السيناريو الإذاعي التفاعلي المتقدم: رحلة استقصائية طبية وقانونية لفك طلاسم الاستعراف الجنائي، وتفكيك تفحم الأنسجة، وحل لغز التوأم المتطابق، وقراءة أسرار الهيكل العظمي وفصائل الدم — مدعومة بقواعد الذاكرة الخارقة (<bdi dir="ltr">S.E.E. Principle</bdi>) وأسرار أسئلة الامتحانات التنافسية (<bdi dir="ltr">High-Yield MCQs</bdi>).
+        </p>
+      </div>
+
+      <!-- Host Dossier Profiles -->
+      <div class="hosts-dossier">
+        <div class="host-card ramy">
+          <div class="host-avatar">
+            <i data-lucide="headphones" style="width: 30px; height: 30px;"></i>
+          </div>
+          <div class="host-info">
+            <h3>
+              <span>رامي العزبي</span>
+              <span style="font-size: 0.75rem; font-family: var(--font-label); color: var(--secondary); border: 1px solid currentColor; padding: 0 4px; border-radius: 2px;">HOST</span>
+            </h3>
+            <p class="host-role">الصحفي الاستقصائي والمحاور المشاغب</p>
+            <p class="host-tagline">"الجريمة الكاملة وهمٌ لا وجود له.. طالما أن هناك أثراً لم نره بعد."</p>
+          </div>
+        </div>
+
+        <div class="host-card yehia">
+          <div class="host-avatar">
+            <i data-lucide="shield-alert" style="width: 30px; height: 30px;"></i>
+          </div>
+          <div class="host-info">
+            <h3>
+              <span>د. يحيى المنشاوي</span>
+              <span style="font-size: 0.75rem; font-family: var(--font-label); color: var(--primary); border: 1px solid currentColor; padding: 0 4px; border-radius: 2px;">EXPERT</span>
+            </h3>
+            <p class="host-role">استشاري الطب الشرعي وخبير المراسي الذهنية</p>
+            <p class="host-tagline">"العظام لا تكذب، والجثة المتفحمة تروي قصتها لكل من يتقن قراءة الرماد."</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Studio Workspace (Prompter + Feed + Side Inspector) -->
+    <div class="studio-workspace">
+
+      <!-- Right Column: Prompter Controls & Interactive Dialogue Feed -->
+      <main class="script-column">
+
+        <!-- Teleprompter Floating Control Deck -->
+        <div class="teleprompter-toolbar" id="prompterToolbar">
+          <div class="toolbar-group">
+            <button class="btn-control" id="btnTogglePrompter" onclick="toggleTeleprompter()" aria-label="تشغيل التلقين">
+              <i data-lucide="play" id="prompterPlayIcon" style="width: 16px; height: 16px;"></i>
+              <span id="prompterPlayText">بدء التلقين التلقائي</span>
+            </button>
+            <button class="btn-control" onclick="resetPrompter()" title="الرجوع للبداية">
+              <i data-lucide="rotate-ccw" style="width: 14px; height: 14px;"></i>
+            </button>
+          </div>
+
+          <div class="toolbar-group">
+            <span style="font-size: 0.8rem; color: var(--on-surface-variant); font-family: var(--font-label);">سرعة التمرير:</span>
+            <button class="btn-control active" id="spd1" onclick="setScrollSpeed(1, this)">1x</button>
+            <button class="btn-control" id="spd15" onclick="setScrollSpeed(1.8, this)">1.8x</button>
+            <button class="btn-control" id="spd2" onclick="setScrollSpeed(2.6, this)">2.6x</button>
+          </div>
+
+          <div class="toolbar-group">
+            <span style="font-size: 0.8rem; color: var(--on-surface-variant); font-family: var(--font-label);">الخط:</span>
+            <button class="btn-control" onclick="adjustScriptFontSize(1)" title="تكبير الخط">A+</button>
+            <button class="btn-control" onclick="adjustScriptFontSize(-1)" title="تصغير الخط">A-</button>
+          </div>
+
+          <div class="toolbar-group">
+            <label for="speakerFilter" style="font-size: 0.8rem; color: var(--on-surface-variant); margin-left: 4px;">عزل الصوت:</label>
+            <select class="filter-select" id="speakerFilter" onchange="filterSpeakers(this.value)">
+              <option value="all">كل المتحدثين (حوار ثنائي)</option>
+              <option value="ramy">رامي فقط (المحاور)</option>
+              <option value="yehia">د. يحيى فقط (الخبير الشرعي)</option>
+            </select>
+          </div>
+
+          <!-- Reading Progress Bar -->
+          <div class="prompter-progress-track">
+            <div class="prompter-progress-fill" id="prompterProgressFill"></div>
+          </div>
+        </div>
+
+        <!-- Scene Navigation Pills -->
+        <nav class="scene-navigator" aria-label="فصول الحلقة">
+          <button class="scene-chip active" onclick="jumpToScene('scene-0', this)">00: المقدمة والرماد</button>
+          <button class="scene-chip" onclick="jumpToScene('scene-1', this)">01: هرم الاستعراف</button>
+          <button class="scene-chip" onclick="jumpToScene('scene-2', this)">02: التفحم والتعفن</button>
+          <button class="scene-chip" onclick="jumpToScene('scene-3', this)">03: لغز التوأم والبصمة</button>
+          <button class="scene-chip" onclick="jumpToScene('scene-4', this)">04: فك شيفرة العظام</button>
+          <button class="scene-chip" onclick="jumpToScene('scene-5', this)">05: سر قطرة الدم</button>
+          <button class="scene-chip" onclick="jumpToScene('scene-6', this)">06: ماستركلاس الذاكرة</button>
+        </nav>
+
+        <!-- Script Feed Container -->
+        <div class="script-feed" id="scriptFeed">
+
+          <!-- SCENE 0: COLD OPEN -->
+          <article class="scene-block" id="scene-0">
+            <div class="scene-header-card">
+              <span class="scene-number">المشهد الافتتاحي • SCENE 00</span>
+              <h2 class="scene-title">مسرح الجريمة: رماد مصنع الكيماويات المهجور</h2>
+              <p class="scene-synopsis">الساعة الثانية فجراً، حريق هائل يلتهم مستودعاً نائياً. وسط الركام، تكتشف الشرطة جثة بشرية متفحمة كلياً، تلاشت معالم وجهها، واحترقت أطرافها. هل انطمس الدليل إلى الأبد؟</p>
+            </div>
+
+            <div class="dialogue-card stage-cue">
+              <i data-lucide="volume-2" style="width: 18px; height: 18px; color: var(--secondary);"></i>
+              <span>[مؤثر صوتي: صوت صفارات إنذار بعيدة، حفيف ألسنة اللهب المخمدة، وخرير مياه الإطفاء يمتزج بنبضات موسيقى غموض سينمائية هادئة].</span>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(يقترب من الميكروفون، بنبرة استقصائية مشدودة تملؤها الدهشة)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:00:15]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  الساعة تشير إلى الثانية صباحاً. رائحة الدخان الخانقة لم تتبدد بعد. يقف المحقق أمام كتلة سوداء متفحمة لا تكاد تشبه أي كائن حي. لا وثائق شخصية في الجيوب.. لا ملامح وجه تدل على صاحبها.. وأطراف الأصابع تحولت إلى رماد هش!
+                </p>
+                <p>
+                  الجميع في مسرح الجريمة يردد جملة واحدة بإحباط: «الجريمة كاملة، وصاحب الجثة لن يُعرف أبداً!». لكن في علم الطب الشرعي، حتى الرماد.. له لسان ينطق بالحقائق!
+                </p>
+                <p>
+                  أهلاً بكم في أولى حلقات «الملف 99». ومعي في الأستوديو من سينسف هذه الأسطورة اليوم: استشاري الطب الشرعي، دكتور يحيى المنشاوي. دكتور يحيى، هل مات الدليل حقاً؟
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card yehia" data-speaker="yehia">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">Y</div>
+                  <span class="speaker-name">د. يحيى</span>
+                  <span class="stage-direction">(بهدوء وثقة الطبيب الشرعي المتمرس، يفتح ملفاً أسود عليه وسم Forensic File #99)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:01:10]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  أهلاً بك يا رامي، وبكل مستمعينا وأطباء ومحققي المستقبل. الجاني الذي يظن أن النار قادرة على محو هوية الإنسان واهم جداً!
+                </p>
+                <p>
+                  نعم، نحن نعترف كأطباء شرعيين بأن
+                  <button class="buzzword mcq-trigger" onclick="inspectBuzzword('charring')">التفحم الكامل (Complete Charring)</button>
+                  هو الحالة الأكثر صعوبة على الإطلاق في استعراف الجثث بعد الوفاة (<bdi dir="ltr">Postmortem Identification</bdi>).
+                </p>
+                <p>
+                  والسبب؟ لأن الحريق الشديد يدمر كافة الأنسجة الجلدية السطحية والملامح الوجهية. لكن ما لا يعلمه القاتل، أن جسم الإنسان يخبئ بداخل عظام وأعماق أحشائه خريطة وراثية وتشريحية لا يمكن لألف درجة مئوية أن تصهرها بسهولة!
+                </p>
+              </div>
+              <div class="dialogue-study-callout">
+                <i data-lucide="alert-circle" class="callout-icon"></i>
+                <div class="callout-text">
+                  <strong>قاعدة امتحان الطب الشرعي:</strong> السؤال الشائع جداً: <bdi dir="ltr">"Postmortem identification is most difficult in cases of..."</bdi> الإجابة الصحيحة قطعاً هي <bdi dir="ltr">Complete charring</bdi>، وليس الغرق أو التعفن أو الطعنات المتعددة!
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- SCENE 1: IDENTIFICATION PYRAMID -->
+          <article class="scene-block" id="scene-1">
+            <div class="scene-header-card">
+              <span class="scene-number">المشهد الأول • SCENE 01</span>
+              <h2 class="scene-title">هرم الاستعراف الطبي والقضائي: هل نعرف الاسم أم الصفة؟</h2>
+              <p class="scene-synopsis">تفكيك المفهوم الأكاديمي للاستعراف: الفارق الدقيق بين الاستعراف الكامل والجزئي، التفريد الحاسم، وسيناريوهات الكوارث الكبرى.</p>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(يتساءل بفضول، ويدون ملاحظات سريعة على جهازه اللوحي)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:03:00]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  دكتور يحيى، حينما تقف أمام جثة كهذه، ما هي أول خطوة تخطوها؟ نحن نسمع في الأخبار مصطلحات مثل "تم تحديد هوية الجثة جزئياً" أو "استعراف كامل".. هل هناك درجات علمية للاستعراف (<bdi dir="ltr">Personal Identification</bdi>)؟
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card yehia" data-speaker="yehia">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">Y</div>
+                  <span class="speaker-name">د. يحيى</span>
+                  <span class="stage-direction">(يرسم بإصبعه على الشاشة مثلثاً متدرجاً)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:03:40]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  بالتأكيد يا رامي. الاستعراف في الطب الشرعي له أربعة مستويات صارمة يجب أن يحفظها كل طالب ومحقق:
+                </p>
+                <p>
+                  1. <button class="buzzword" onclick="inspectBuzzword('complete-id')">الاستعراف الكامل (Complete Identification)</button>: وهو التحديد المطلق والنهائي لهوية الشخص، أي الوصول لاسمه الرباعي وسجله القانوني الرسمي.
+                </p>
+                <p>
+                  2. <button class="buzzword" onclick="inspectBuzzword('partial-id')">الاستعراف الجزئي (Partial Identification)</button>: تحديد بعض الخصائص الفردية كالعمر، أو الجنس، أو الطول، أو فصيلة الدم، دون معرفة الاسم. وهذا يضيق دائرة البحث فقط.
+                </p>
+                <p>
+                  3. <button class="buzzword" onclick="inspectBuzzword('positive-id')">التفريد القطعي (Positive Identification / Individualization)</button>: وهو إثبات الهوية بدليل فريد لا يملكه أحد سواه، كالبصمات، سجلات الأسنان، أو البصمة الوراثية (<bdi dir="ltr">DNA</bdi>).
+                </p>
+                <p>
+                  4. <button class="buzzword" onclick="inspectBuzzword('exclusion-id')">الاستعراف بالاستبعاد (Identification by Exclusion)</button>: وهذا نلجأ له في كوارث الطائرات والانهيارات الضخمة؛ عندما تكون لدينا قائمة ركاب مغلقة، فنستبعد الأسماء المطابقة حتى يتبقى اسم واحد وحيد لا يحتمل غيره!
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(يقاطع بحماس واكتشاف)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:05:20]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  انتظر يا دكتور! قرأت بالأمس عن مسألة قانونية تفرق بين السيناريوهات المدنية (<bdi dir="ltr">Civil Scenarios</bdi>) والسيناريوهات الجنائية (<bdi dir="ltr">Criminal Scenarios</bdi>). لماذا يُطلب الطبيب الشرعي أحياناً لفحص شخص حي بكامل صحته؟
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card yehia" data-speaker="yehia">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">Y</div>
+                  <span class="speaker-name">د. يحيى</span>
+                  <span class="stage-direction">(يومئ برأسه مبتسماً لفطنة رامي)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:05:45]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  هذا سؤال جوهري يا رامي! الاستعراف لا يقتصر على الأموات. نحن نفحص الأحياء في مواقف مدنية وجنائية شتى:
+                </p>
+                <p>
+                  • في <strong style="color: var(--secondary);">المسائل المدنية</strong>: فاقد الوعي الذي دخل الطوارئ بلا أوراق ثبوتية، مرضى فقدان الذاكرة (<bdi dir="ltr">Amnesia</bdi>)، دعاوي الميراث المتنازع عليها، تأكيد الأهلية للتجنيد الإجباري (<bdi dir="ltr">Military Service</bdi>)، ومراقبة الحدود وجوازات السفر.
+                </p>
+                <p>
+                  • أما في <strong style="color: var(--primary);">المسائل الجنائية</strong>: انتحال الشخصية الإجرامية، والأهم: تقدير أعمار
+                  <button class="buzzword mcq-trigger" onclick="inspectBuzzword('juvenile')">الأحداث المتهمين (Juvenile Offenders)</button>
+                  بين 12 و18 سنة لتحديد ما إذا كانوا يخضعون لمحكمة الأحداث أم لمحكمة الجنايات العادية!
+                </p>
+              </div>
+              <div class="dialogue-study-callout">
+                <i data-lucide="zap" class="callout-icon"></i>
+                <div class="callout-text">
+                  <strong>فخ امتحان كلاسيكي:</strong> "أي مما يلي ليس سيناريو مدنياً للاستعراف؟" الخيارات تضع: فقدان الذاكرة، التجنيد، فاقد الوعي، و<bdi dir="ltr">Juvenile criminal trial</bdi>. الخيار الأخير جنائي (<bdi dir="ltr">Criminal</bdi>) لأنه يحدد المسؤولية الجنائية والعقوبة، بينما البقية مدنية بحتة!
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- SCENE 2: COMPLETE CHARRING & DECOMPOSITION -->
+          <article class="scene-block" id="scene-2">
+            <div class="scene-header-card">
+              <span class="scene-number">المشهد الثاني • SCENE 02</span>
+              <h2 class="scene-title">صمود الرماد والتعفن: الأعضاء المنيعة وسجلات ما قبل الوفاة</h2>
+              <p class="scene-synopsis">عندما تحترق الجثة حتى السواد أو تذوب تحت وطأة التعفن الرمي، ما هي الحصون البيولوجية الأخيرة التي تنجو من الفناء؟</p>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(ينظر إلى صورة إشعاعية لجثة متفحمة بنظرة مشدوهة)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:07:30]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  لنعد إلى جثة المصنع المتفحمة.. كيف تبدأ تشريح جثة سوداء صلبة كالفحم؟ الجلد ذاب، والعضلات تقلصت في وضعية الملاكم (<bdi dir="ltr">Pugilistic stance</bdi>). أين تضع مشرطك لتستخرج هوية الضحية؟
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card yehia" data-speaker="yehia">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">Y</div>
+                  <span class="speaker-name">د. يحيى</span>
+                  <span class="stage-direction">(يشرح بدقة طبية بالغة، مستعرضاً أدوات التشريح)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:08:15]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  نذهب فوراً إلى الحصون الطبيعية المنيعة التي أودعها الخالق في جسم الإنسان!
+                </p>
+                <p>
+                  أولاً: <button class="buzzword" onclick="inspectBuzzword('odontology')">طب الأسنان الشرعي (Forensic Odontology)</button>. مينا الأسنان هي أصلب مادة في جسم الإنسان قاطبة؛ تصمد أمام درجات حرارة تتجاوز 1000 درجة مئوية. نقوم بمطابقة حشوات الأسنان، التركيبات، والخلع مع
+                  <button class="buzzword" onclick="inspectBuzzword('antemortem')">سجلات ما قبل الوفاة (Antemortem Records)</button>
+                  التي نحصل عليها من أطباء الأسنان.
+                </p>
+                <p>
+                  ثانياً: لب الأسنان (<bdi dir="ltr">Dental Pulp</bdi>) ونخاع العظام العميقة (<bdi dir="ltr">Bone Marrow</bdi>) داخل عظمة الفخذ والجمجمة؛ تكون معزولة حرارياً بطبقات العظم الكثيف، فنستخرج منها الـ <bdi dir="ltr">DNA</bdi> سليماً وكأنه حُفظ في خزانة فولاذية!
+                </p>
+                <p>
+                  وثالثاً: لو كنا في حالة تعفن رمي متقدم (<bdi dir="ltr">Advanced Putrefaction</bdi>)، فالأعضاء الداخلية لا تتعفن بنفس السرعة.
+                  <button class="buzzword mcq-trigger" onclick="inspectBuzzword('prostate-uterus')">غدة البروستاتا (Prostate)</button>
+                  هي آخر عضو يتعفن في جسم الذكر، بينما <button class="buzzword mcq-trigger" onclick="inspectBuzzword('prostate-uterus')">الرحم غير الحامل (Non-pregnant Uterus)</button> هو آخر عضو يتعفن في الأنثى!
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(مندهشاً من دقة التفاصيل السريرية)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:10:05]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  سبحان الله! البروستاتا في الرجل والرحم غير الحامل في المرأة يقاومان التعفن حتى الرمق الأخير! وماذا عن الأسنان أيضاً؟ هل تكشف إن كان المتوفى يعاني من تسمم مزمن أو يعمل في مهنة كيميائية؟
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card yehia" data-speaker="yehia">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">Y</div>
+                  <span class="speaker-name">د. يحيى</span>
+                  <span class="stage-direction">(يومئ بحماس ويشير إلى رسم للثة والأسنان)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:10:30]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  أحسنت التوقع يا رامي! اللثة والأسنان تسجل التاريخ السمي للشخص عبر خطوط ترسيب ملونة مميزة للغاية:
+                </p>
+                <p>
+                  • <button class="buzzword mcq-trigger" onclick="inspectBuzzword('burtonian-line')">خط بورتون الأزرق (Burtonian Line)</button>: خط أزرق مميز على حافة اللثة يدل على التسمم المزمن بالرصاص (<bdi dir="ltr">Lead</bdi>).
+                </p>
+                <p>
+                  • خط رمادي يدل على الزئبق (<bdi dir="ltr">Mercury</bdi>).
+                </p>
+                <p>
+                  • خط أخضر يدل على النحاس (<bdi dir="ltr">Copper</bdi>)، وخط أسود يدل على البزموت (<bdi dir="ltr">Bismuth</bdi>)، بينما خط أصفر يدل على الكادميوم (<bdi dir="ltr">Cadmium</bdi>).
+                </p>
+                <p>
+                  أما مضاد التتراسيكلين في الطفولة، فيترك تصبغاً أصفر قذراً دائماً على مينا الأسنان!
+                </p>
+              </div>
+              <div class="dialogue-study-callout">
+                <i data-lucide="bookmark" class="callout-icon"></i>
+                <div class="callout-text">
+                  <strong>سؤال الامتحان الشهير:</strong> <bdi dir="ltr">"A blue line on the gingival margin indicates chronic poisoning by: Lead."</bdi> تذكر دائماً: الرصاص أزرق، الزئبق رمادي، والنحاس أخضر!
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- SCENE 3: THE TWIN PARADOX & FINGERPRINTS -->
+          <article class="scene-block" id="scene-3">
+            <div class="scene-header-card">
+              <span class="scene-number">المشهد الثالث • SCENE 03</span>
+              <h2 class="scene-title">لغز التوأم المتطابق ومعجزة البصمات: 1 في 64 مليار</h2>
+              <p class="scene-synopsis">عندما يتطابق الحمض النووي بنسبة 100% بين مشتبهين توأم، تنهار تقنية الـ DNA وتصبح عاجزة! من يحسم الإدانة وينقذ البريء؟</p>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(يلقي بقنبلة درامية مشوقة)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:12:40]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  دكتور يحيى، دعني أطرح عليك كابوس كل محقق جنائي: لنفترض أن لدينا مسرح جريمة، وجدنا فيه عينة دم، وحللناها وخرجت بصمة وراثية (<bdi dir="ltr">DNA</bdi>). قبضنا على المتهم، لكن تبين أن لديه أخاً توأماً متطابقاً ناتجاً عن بويضة واحدة (<bdi dir="ltr">Uniovular / Identical Twin</bdi>)!
+                </p>
+                <p>
+                  كلاهما يملك نفس الـ <bdi dir="ltr">DNA</bdi> تماماً! القاتل يبتسم ويقول للمحكمة: «أثبتوا من منا صاحب الدم!». هل تسقط القضية؟
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card yehia" data-speaker="yehia">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">Y</div>
+                  <span class="speaker-name">د. يحيى</span>
+                  <span class="stage-direction">(يضحك بثقة بالغة ويثبت شاشته على رسم مكبر لبصمة إصبع)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:13:25]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  هذا الفخ يسقط فيه من يظن أن الـ <bdi dir="ltr">DNA</bdi> هو الإله المطلق للإثبات الجنائي! الحل هنا يكمن في سيدة الأدلة الكلاسيكية:
+                  <button class="buzzword mcq-trigger" onclick="inspectBuzzword('fingerprints')">علم البصمات (Dactylography)</button>!
+                </p>
+                <p>
+                  حتى
+                  <button class="buzzword mcq-trigger" onclick="inspectBuzzword('uniovular-twins')">التوائم أحادية البويضة (Uniovular Twins)</button>
+                  الذين يتطابق حمضهم النووي بنسبة 100%، يملكون بصمات أصابع مختلفة تماماً ولا يمكن أن تتطابق أبداً!
+                </p>
+                <p>
+                  بصمات الأصابع تتشكل في
+                  <button class="buzzword" onclick="inspectBuzzword('16-week-iul')">الأسبوع الـ 16 من الحياة داخل الرحم (16th week of IUL)</button>،
+                  وتتشكل بتأثير القوى والضغوط الدقيقة لحركة الجنين داخل السائل الأمنيوسي. احتمال وجود بصمتين متطابقتين في العالم هو واحد في 64 مليار (<bdi dir="ltr">1 in 64 billion</bdi>)!
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(متعجباً)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:15:10]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  مذهل! يعني الـ <bdi dir="ltr">DNA</bdi> يفشل مع التوائم المتطابقة، بينما البصمة تحسم المعركة! لكن ماذا لو حاول القاتل تشويه أصابعه؟ حرقها بمادة كاوية أو جرحها بالسكين؟ هل يمكن محو البصمة؟
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card yehia" data-speaker="yehia">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">Y</div>
+                  <span class="speaker-name">د. يحيى</span>
+                  <span class="stage-direction">(يوضح القاعدة التشريحية الذهبية لتلف الحلمات الجلدية)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:15:35]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  هنا نطبق
+                  <button class="buzzword" onclick="inspectBuzzword('dermal-rule')">قاعدة تلف البشرة والأدمة (Epidermal vs Dermal Rule)</button>:
+                </p>
+                <p>
+                  • إذا كان التلف سطحياً واقتصر على طبقة <strong style="color: var(--secondary);">البشرة (Epidermis)</strong>، فإن الخطوط الحلمية تتجدد تلقائياً وتعود إلى شكلها الأصلي بدقة متناهية ودون أي تغيير!
+                </p>
+                <p>
+                  • أما إذا امتد التدمير عميقاً حتى <strong style="color: var(--primary);">الأدمة (Dermis)</strong>، فإنه يترك ندبة دائمة (<bdi dir="ltr">Permanent Scar</bdi>). والمفارقة هنا أن هذه الندبة لا تطمس الهوية، بل تصبح علامة تفريد إضافية تميز صاحبها أكثر في سجلات الشرطة!
+                </p>
+                <p>
+                  هناك حالات طبية تسبب
+                  <button class="buzzword mcq-trigger" onclick="inspectBuzzword('celiac-atrophy')">ضموراً مؤقتاً عكوساً في البصمات</button>
+                  مثل حساسية القمح (<bdi dir="ltr">Celiac disease</bdi>) والإكزيما، بينما يسبب الجذام (<bdi dir="ltr">Leprosy</bdi>) والإشعاع تلفاً دائماً.
+                </p>
+              </div>
+              <div class="dialogue-study-callout">
+                <i data-lucide="help-circle" class="callout-icon"></i>
+                <div class="callout-text">
+                  <strong>سؤال الامتحان الشهير:</strong> <bdi dir="ltr">"The most reliable method of identifying an identical twin is: Fingerprint."</bdi> لأن الحمض النووي للتوأم المتطابق واحد، لكن البصمات تتباين حتماً!
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- SCENE 4: OSTEOLOGY & MEDICO-LEGAL AGES -->
+          <article class="scene-block" id="scene-4">
+            <div class="scene-header-card">
+              <span class="scene-number">المشهد الرابع • SCENE 04</span>
+              <h2 class="scene-title">فك شيفرة الهيكل العظمي: الحوض، القامة، وساعة العمر الجنائي</h2>
+              <p class="scene-synopsis">إذا لم يبق من الجثة إلا عظام عارية، كيف نعرف هل الضحية رجل أم امرأة؟ كم كان طوله؟ وما هي المحطات الإشعاعية الفاصلة للمسؤولية الجنائية؟</p>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(يشير إلى هيكل عظمي افتراضي)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:18:00]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  لو عثرنا على عظام في غابة أو تحت أنقاض مبنى، ما مدى دقة الطبيب الشرعي في تحديد الجنس (<bdi dir="ltr">Sex Determination</bdi>) من العظام المجردة؟ وهل كل العظام متساوية في القيمة؟
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card yehia" data-speaker="yehia">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">Y</div>
+                  <span class="speaker-name">د. يحيى</span>
+                  <span class="stage-direction">(يسرد نسب الدقة التشريحية الصارمة)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:18:40]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  الدقة مذهلة عندما توضع العظام في يد خبير:
+                </p>
+                <p>
+                  • عظام <strong style="color: var(--primary);">الحوض وحده (Pelvis alone)</strong> تعطينا دقة بنسبة
+                  <button class="buzzword mcq-trigger" onclick="inspectBuzzword('pelvis-accuracy')">95% في تحديد الجنس</button>!
+                </p>
+                <p>
+                  • عظام <strong style="color: var(--secondary);">الجمجمة وحدها (Skull alone)</strong> تعطينا دقة 90%.
+                </p>
+                <p>
+                  • وإذا فحصنا <strong style="color: var(--tertiary);">الحوض مع الجمجمة معاً</strong>، ترتفع الدقة إلى 98%!
+                </p>
+                <p>
+                  • بينما العظام الطويلة تعطي فقط 70–80%. وأقل عظمة مفيدة شعاعياً في تحديد الجنس هي
+                  <button class="buzzword mcq-trigger" onclick="inspectBuzzword('humerus-least')">عظمة العضد (Humerus is least helpful)</button>!
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(يستفسر عن سر تفوق عظام الحوض)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:20:15]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  لماذا الحوض تحديداً هو الملك في تحديد الجنس؟ ما هي الفروق الصارخة بين حوض الذكر وحوض الأنثى؟
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card yehia" data-speaker="yehia">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">Y</div>
+                  <span class="speaker-name">د. يحيى</span>
+                  <span class="stage-direction">(يستعرض الفروق التشريحية للحوض)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:20:45]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  حوض الأنثى مصمم بطبيعته الفسيولوجية لعملية الحمل والولادة، لذلك:
+                </p>
+                <p>
+                  • <button class="buzzword mcq-trigger" onclick="inspectBuzzword('subpubic-angle')">القوس العاني (Subpubic angle)</button>: في الأنثى يكون منفرجاً واسعاً على شكل حرف (<bdi dir="ltr">U-shape</bdi> > 90°)، بينما في الذكر يكون زاوية حادة على شكل حرف (<bdi dir="ltr">V-shape</bdi> < 70°).
+                </p>
+                <p>
+                  • <button class="buzzword" onclick="inspectBuzzword('obturator-foramen')">الثقبة السدادية (Obturator foramen)</button>: مثلثة وصغيرة في الأنثى، بينما تكون بيضاوية وكبيرة في الذكر!
+                </p>
+                <p>
+                  • الثلمة الوركية الكبرى (<bdi dir="ltr">Greater Sciatic Notch</bdi>): عريضة وضحلة في الأنثى، وضيقة وعميقة في الذكر.
+                </p>
+                <p>
+                  • عظم الفخذ (<bdi dir="ltr">Femur</bdi>): هو أدق عظمة لتقدير قامة الإنسان (<bdi dir="ltr">Stature</bdi>)، ويمثل بالضبط
+                  <button class="buzzword" onclick="inspectBuzzword('femur-height')">25% من طول الشخص (0.25 × الطول)</button>. أما باع الذراعين (<bdi dir="ltr">Arm Span</bdi>) فيساوي 100% من طول القامة!
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(يفتح جدول الأعمار الجنائية)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:23:00]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  هذا يقودنا إلى المحك الأصعب: تحديد العمر الإشعاعي (<bdi dir="ltr">Radiological Age Estimation</bdi>)! متى يُعد الشخص كامل المسؤولية الجنائية؟ ومتى يُستدعى للتجنيد؟
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card yehia" data-speaker="yehia">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">Y</div>
+                  <span class="speaker-name">د. يحيى</span>
+                  <span class="stage-direction">(يشدد النبرة على المحطات القانونية الصارمة)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:23:30]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  احفظ هذه التواريخ الإشعاعية كاسمك لأنها صلب كل تقرير شرعي:
+                </p>
+                <p>
+                  • <strong style="color: var(--secondary);">14 سنة</strong>: اتحاد البكرة والرؤيس (<bdi dir="ltr">Trochlea & Capitulum</bdi>) في المرفق — سن البلوغ القانوني واستحالة ارتكاب الاغتصاب فسيولوجياً.
+                </p>
+                <p>
+                  • <strong style="color: var(--secondary);">15 سنة</strong>: اتحاد البكرة والرؤيس مع جسم العضد، واختفاء خط (<bdi dir="ltr">Y-suture</bdi>) في حُق الحوض — نهاية الحضانة والمحاكمة بتدابير الأحداث.
+                </p>
+                <p>
+                  • <strong style="color: var(--tertiary);">17 سنة</strong>: اتحاد اللقيمة الإنسية للعضد (<bdi dir="ltr">Medial epicondyle</bdi>) وأعلى الكعبرة —
+                  <button class="buzzword mcq-trigger" onclick="inspectBuzzword('age-17')">سن المسؤولية الجنائية الكاملة (Complete Criminal Responsibility)</button>!
+                </p>
+                <p>
+                  • <strong style="color: var(--primary);">18 سنة</strong>: اتحاد رأس الفخذ والعضد ومشطيات اليد للذكور —
+                  <button class="buzzword mcq-trigger" onclick="inspectBuzzword('age-18')">الاستدعاء الأول للتجنيد (1st call for military)</button>، وسن الزواج القانوني والرضا في الاغتصاب.
+                </p>
+                <p>
+                  • <strong style="color: var(--primary);">21 سنة</strong>: اتحاد عظام مفصل الركبة (أسفل الفخذ وأعلى القصبة) والحدبة الإسكية (<bdi dir="ltr">Ischial tuberosity</bdi>) —
+                  <button class="buzzword mcq-trigger" onclick="inspectBuzzword('age-21')">سن الحقوق المدنية الكاملة والاستدعاء الثاني للتجنيد (أشعة على مفصل الركبة)</button>!
+                </p>
+              </div>
+              <div class="dialogue-study-callout">
+                <i data-lucide="crosshair" class="callout-icon"></i>
+                <div class="callout-text">
+                  <strong>فخاخ الأسئلة:</strong> الاستدعاء الأول للتجنيد (18 سنة) يُعرف برأس الفخذ. الاستدعاء الثاني للتجنيد والحقوق المدنية الكاملة (21 سنة) يُعرف بأشعة على الركبة (<bdi dir="ltr">Knee Joint</bdi>) والحدبة الإسكية!
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- SCENE 5: SEROLOGY & DNA PROFILING -->
+          <article class="scene-block" id="scene-5">
+            <div class="scene-header-card">
+              <span class="scene-number">المشهد الخامس • SCENE 05</span>
+              <h2 class="scene-title">سر قطرة الدم والبصمة الوراثية: بين الاستبعاد والتأكيد القطعي</h2>
+              <p class="scene-synopsis">الخطوات الخمس الصارمة لتحليل بقع الدم: اختبارات البلورات المجهرية (تاكاياما ضد تيخمان)، قواعد استبعاد الأبوة الجنائية، وسحر الـ DNA الميتوكوندري.</p>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(يرتدي قفازات فحص ويحمل أنبوب اختبار ملطخاً بلون بني)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:27:00]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  وجدنا بقعة بنية مشبوهة على ملابس الضحية المتفحمة.. كيف يتأكد المعمل الجنائي من أنها دم بشري؟ وليس مجرد صدأ أو بقعة شاي أو دم حيوان؟
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card yehia" data-speaker="yehia">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">Y</div>
+                  <span class="speaker-name">د. يحيى</span>
+                  <span class="stage-direction">(يستحضر بروتوكول الخطوات الخمس لتحليل بقع الدم)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:27:40]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  لدينا بروتوكول إلزامي من 5 خطوات متتابعة لا نتخطى خطوة منها:
+                </p>
+                <p>
+                  <strong>الخطوة الأولى: هل البقعة دم؟</strong><br>
+                  نبدأ بالفحوصات التمهيدية الملونة: كاستل ماير (<bdi dir="ltr">Kastle-Meyer</bdi>) يعطي لوناً وردياً، بنزيدين يعطي أزرق، وغواياكوم يعطي أخضر. إذا كانت إيجابية، نؤكدها باختبار البلورات:
+                  <button class="buzzword mcq-trigger" onclick="inspectBuzzword('takayama')">اختبار تاكاياما (Takayama test)</button>
+                  الذي ينتج بلورات وردية إبرية من الهيموكروموجين، أو اختبار تيخمان (<bdi dir="ltr">Teichmann</bdi>) الذي ينتج بلورات بنية معينية من الهيمين!
+                </p>
+                <p>
+                  <strong>الخطوة الثانية: هل الدم بشري أم حيواني؟</strong><br>
+                  باستخدام <button class="buzzword" onclick="inspectBuzzword('precipitin')">اختبار الترسيب (Precipitin Test)</button>؛ حيث يظهر حلقة ترسيب بيضاء عند تفاعل بروتين الدم البشري مع المصل المضاد للإنسان.
+                </p>
+                <p>
+                  <strong>الخطوة الثالثة: لمن يعود الدم؟</strong><br>
+                  فصائل الدم (<bdi dir="ltr">ABO</bdi>) و(<bdi dir="ltr">Rh</bdi>) هي فحص استبعاد ممتاز (<bdi dir="ltr">Good Negative Test</bdi>) ولا تثبت الأبوة وحدها. بينما البصمة الوراثية (<bdi dir="ltr">DNA Profiling</bdi>) تعطي إثباتاً إيجابياً قاطعاً بنسبة تتجاوز 99.99%!
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(يستفسر عن قواعد الوراثة ونفي الأبوة في المحاكم)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:30:10]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  ما هي القواعد التي يستند إليها القاضي الشرعي لنفي نسب طفل بناءً على فصيلة الدم فقط؟
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card yehia" data-speaker="yehia">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">Y</div>
+                  <span class="speaker-name">د. يحيى</span>
+                  <span class="stage-direction">(يسرد القواعد الخمس الصارمة لقوانين مندل القضائية)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:30:35]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  قواعد قاطعة لا تقبل الجدل:
+                </p>
+                <p>
+                  1. <strong style="color: var(--tertiary);">قاعدة الوالد O</strong>: أب أو أم فصيلتهما O مستحيل أن ينجبا طفلاً فصيلته <bdi dir="ltr">AB</bdi>!
+                </p>
+                <p>
+                  2. <strong style="color: var(--tertiary);">قاعدة الوالد AB</strong>: والد فصيلته <bdi dir="ltr">AB</bdi> مستحيل أن ينجب طفلاً فصيلته <bdi dir="ltr">O</bdi>!
+                </p>
+                <p>
+                  3. لو كان كلا الوالدين O، فالطفل حتماً ولابد أن يكون <bdi dir="ltr">O</bdi>.
+                </p>
+                <p>
+                  4. <strong style="color: var(--primary);">عامل الريسوس (Rh)</strong>: إذا كان كلا الوالدين سالب الريسوس (<bdi dir="ltr">Rh-ve</bdi>)، فمستحيل تماماً أن يكون الطفل موجب الريسوس (<bdi dir="ltr">Rh+ve</bdi>)!
+                </p>
+                <p>
+                  5. وماذا عن نقل الدم الخاطئ؟ لو نُقل دم غير متطابق، فإن السبب الأول للوفاة هو
+                  <button class="buzzword mcq-trigger" onclick="inspectBuzzword('renal-failure')">الفشل الكلوي الحاد (Acute Renal Failure)</button>
+                  بسبب انسداد الأنابيب الكلوية بأسطوانات الهيماتين الحمضي!
+                </p>
+              </div>
+              <div class="dialogue-study-callout">
+                <i data-lucide="dna" class="callout-icon"></i>
+                <div class="callout-text">
+                  <strong>الحمض النووي الميتوكوندري (mtDNA):</strong> يورث حصرياً من الأم (<bdi dir="ltr">Exclusively Maternal</bdi>) عبر سيتوبلازم البويضة! نستخدمه في فحص ساق الشعر الخالي من الجذور والعظام المتآكلة لأن نسخه في الخلية تصل للآلاف.
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- SCENE 6: KEVIN HORSLEY MASTERCLASS -->
+          <article class="scene-block" id="scene-6">
+            <div class="scene-header-card">
+              <span class="scene-number">المشهد السادس • SCENE 06</span>
+              <h2 class="scene-title">ماستركلاس كيفن هورسلي: كيف تحفظ تفاصيل الطب الشرعي بلا نسيان؟</h2>
+              <p class="scene-synopsis">د. يحيى يكشف لرامي وللطلاب أسرار بطل الذاكرة العالمي كيفن هورسلي: مبدأ S.E.E.، طريقة أجزاء الجسد، وكيف تضع غطاءً على تعلمك قبل أن يتبخر 82% منه!</p>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(يضع رأسه بين يديه مبتسماً بإعجاب وإرهاق)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:33:45]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  يا دكتور يحيى.. كمية المعلومات، والسنوات، والأرقام، والبلورات، والأعضاء هائلة ومربكة جداً! كيف يستطيع طالب الطب أو المحقق الجنائي أن يحفظ كل هذه المعطيات ولا يخلط بين 17 سنة و18 سنة، أو بين تاكاياما وتيخمان؟ هل نحتاج لذاكرة تصويرية خارقة؟
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card yehia" data-speaker="yehia">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">Y</div>
+                  <span class="speaker-name">د. يحيى</span>
+                  <span class="stage-direction">(يبتسم ويقترب بحماس، وكأنه على وشك كشف سر الكنز)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:34:30]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  لا وجود لما يسمى «الذاكرة الفوتوغرافية» يا رامي! بطل الذاكرة العالمي <strong style="color: var(--secondary);">كيفن هورسلي (Kevin Horsley)</strong> صاحب الرقم القياسي في حفظ أول 10,000 رقم من ثابت باي (<bdi dir="ltr">Pi</bdi>) يؤكد دائماً: الذاكرة ليست موهبة فطرية، بل هي عادة واستراتيجية تدريب!
+                </p>
+                <p>
+                  لكي تجعل المعلومة الطبية راسخة كالنقش على الحجر، استخدم
+                  <button class="buzzword memory-trigger" onclick="inspectBuzzword('see-principle')">مبدأ S.E.E. Principle</button>:
+                </p>
+                <p>
+                  • <strong>S - الحواس (Senses):</strong> لا تقرأ الكلمات كأصوات مجردة، بل اصنع في عقلك فيلماً مجسماً متعدد الحواس. تذوق، اشم، والمس!
+                </p>
+                <p>
+                  • <strong>E - المبالغة (Exaggeration):</strong> العقل لا ينسى الأشياء الغريبة والضخمة والفكاهية. تضخيم الصورة يرسخها!
+                </p>
+                <p>
+                  • <strong>E - الحركة والحيوية (Energize):</strong> اجعل صورك الذهنية تتحرك وتنفجر وتتصادم، وليست صوراً ساكنة مملة!
+                </p>
+                <p>
+                  مثال سريع: كيف تحفظ أن <bdi dir="ltr">Takayama</bdi> يعطي بلورات وردية إبرية؟ تخيل قطاراً يابانياً اسمه «تاكاياما» لونه وردي فاقع، عجلاته مصنوعة من إبر خياطة وردية عملاقة تشكك في يدك! هل ستنساها الآن؟ مستحيل!
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(يضحك مصفقاً)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:37:00]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  رائع! قطار تاكاياما الوردي ذو الإبر العملاقة! وماذا عن طريقة الجسد (<bdi dir="ltr">The Body Method</bdi>)؟ كيف نخزن عليها تواريخ اندماج العظام؟
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card yehia" data-speaker="yehia">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">Y</div>
+                  <span class="speaker-name">د. يحيى</span>
+                  <span class="stage-direction">(يقف ويشير إلى أجزاء جسده بتتابع ممتع)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:37:35]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  طريقة الجسد التي ابتكرها الإغريق واستخدمها هورسلي تربط المعلومة الجديدة بأماكن ثابتة في ذاكرتك طويلة المدى (<bdi dir="ltr">LTM + STM = MTM</bdi>):
+                </p>
+                <p>
+                  • انظر إلى <strong>مفصل ركبتك</strong>: تخيل أن ركبتك تضيء باللون الأخضر عندما تتم <strong style="color: var(--primary);">21 سنة</strong>، لتمنحك رخصة قيادة وحق التصويت المدني واستدعاء التجنيد الثاني!
+                </p>
+                <p>
+                  • انظر إلى <strong>حوضك</strong>: تذكر سن <strong style="color: var(--secondary);">15 سنة</strong>، حيث يختفي خط (<bdi dir="ltr">Y</bdi>) في الحُق وتنتهي حضانة الأم!
+                </p>
+                <p>
+                  • وتذكر دائماً تحذير هورسلي من منحنى شبيتزر للنسيان: الطالب العادي يفقد 82% من معلوماته بعد 28 يوماً إذا لم يقم بالمراجعة!
+                  <button class="buzzword" onclick="inspectBuzzword('review-renew')">المراجعة لتجديد الذاكرة (Review to Renew)</button>
+                  هي التي تضع غطاءً محكماً على وعاء المعرفة حتى لا تتسرب!
+                </p>
+              </div>
+              <div class="dialogue-study-callout">
+                <i data-lucide="sparkles" class="callout-icon"></i>
+                <div class="callout-text">
+                  <strong>معادلة كيفن هورسلي الذهبية:</strong> <bdi dir="ltr">LTM (الذاكرة طويلة الأمد: جسدك أو سيارتك) + STM (المعلومة الجديدة) = MTM (ذاكرة متوسطة/دائمة لا تضيع)</bdi>!
+                </div>
+              </div>
+            </div>
+
+            <div class="dialogue-card ramy" data-speaker="ramy">
+              <div class="dialogue-header">
+                <div class="speaker-meta">
+                  <div class="speaker-avatar-mini">R</div>
+                  <span class="speaker-name">رامي</span>
+                  <span class="stage-direction">(يختتم الحلقة بنبرة إذاعية حماسية دافئة)</span>
+                </div>
+                <span class="timecode-tag"><bdi dir="ltr">[00:40:10]</bdi></span>
+              </div>
+              <div class="speech-content">
+                <p>
+                  وهكذا يا أصدقائي.. رأينا كيف أن الجثة المتفحمة التي ظن القاتل أنها طمست كل أثر، تحدثت بالأسنان، والبروستاتا، ومينا الفك، والـ <bdi dir="ltr">DNA</bdi> المعزول في نخاع العظام!
+                </p>
+                <p>
+                  ورأينا كيف أن التوأم المتطابق ينكشف بالبصمات، وأن العظام ساعة دقيقة تحسب العمر بالسنة واليوم.
+                </p>
+                <p>
+                  شكراً لدكتور يحيى المنشاوي على هذه الجرعة العلمية والذهنية الفائقة. والآن حان دوركم في
+                  <strong>ركن المراسي الذهنية والمختبر التفاعلي</strong>
+                  الموجود أسفل هذا الاستوديو.. اختبروا معلوماتكم، واضبطوا مراسيكم، ونلقاكم في الحلقة القادمة من «الملف 99»! دمتم في أمان الله.
+                </p>
+              </div>
+            </div>
+
+            <div class="dialogue-card stage-cue">
+              <i data-lucide="music" style="width: 18px; height: 18px; color: var(--primary);"></i>
+              <span>[مؤثر صوتي: صعود موسيقى التتر الختامية المميزة لـ «الملف 99» مصحوبة بنغمة إغلاق الميكروفونات وانطفاء إشارة البث المباشر].</span>
+            </div>
+
+          </article>
+
+        </div>
+      </main>
+
+      <!-- Left Column: Side Deck (Buzzword Inspector, Soundboard, Quick Pegs) -->
+      <aside class="studio-sidebar">
+
+        <!-- Buzzword Inspector Panel -->
+        <section class="side-panel">
+          <div class="side-panel-header">
+            <h3 class="side-panel-title">
+              <i data-lucide="eye" style="width: 18px; height: 18px; color: var(--tertiary);"></i>
+              <span>مجهر المصطلحات الشرعية</span>
+            </h3>
+            <span style="font-size: 0.75rem; color: var(--on-surface-muted); font-family: var(--font-label);">LIVE INSPECTOR</span>
+          </div>
+
+          <div id="inspectorContainer">
+            <div class="buzzword-inspector" id="activeInspector">
+              <span class="inspector-badge" id="inspBadge">مصطلح عالي الأهمية</span>
+              <h4 class="inspector-title" id="inspTitle">التفحم الكامل (Complete Charring)</h4>
+              <p class="inspector-def" id="inspDef">أقصى درجات التدمير الحراري لجسم الإنسان، حيث تفنى البشرة والأنسجة الرخوة والملامح الوجهية بالكامل.</p>
+              <div class="inspector-rule-box" id="inspRule">
+                <strong>قاعدة الامتحان:</strong> أصعب حالات الاستعراف بعد الوفاة؛ ويعتمد حصرياً على سجلات الأسنان والـ DNA المستخلص من نخاع العظم أو لب السن.
+              </div>
+              <div class="inspector-memory-box" id="inspMemory">
+                <strong>مرساة S.E.E.:</strong> تخيل سنّاً عملاقاً يرتدي خوذة رجل إطفاء مضادة للحريق، ويبتسم وسط ألسنة لهب بركانية!
+              </div>
+            </div>
+          </div>
+          <p style="font-size: 0.78rem; color: var(--on-surface-muted); margin: 0;">
+            انقر على أي مصطلح مظلل بلون مميز في نص السيناريو لتحديث بيانات المجهر فوراً.
+          </p>
+        </section>
+
+        <!-- Soundboard Studio Simulator -->
+        <section class="side-panel">
+          <div class="side-panel-header">
+            <h3 class="side-panel-title">
+              <i data-lucide="volume-2" style="width: 18px; height: 18px; color: var(--secondary);"></i>
+              <span>لوحة المؤثرات الإذاعية الحية</span>
+            </h3>
+            <span style="font-size: 0.75rem; color: var(--secondary); font-family: var(--font-label);">SYNTH AUDIO</span>
+          </div>
+          <p style="font-size: 0.82rem; color: var(--on-surface-variant); margin: 0 0 var(--space-xs);">
+            مؤثرات صوتية تُخلّق فورياً عبر محرك الصوت الداخلي للمتصفح (<bdi dir="ltr">Web Audio API</bdi>):
+          </p>
+
+          <div class="soundboard-grid">
+            <button class="btn-sound" onclick="playStudioAudio('chime', this)">
+              <i data-lucide="bell" style="width: 14px; height: 14px;"></i>
+              <span>نغمة البداية (Chime)</span>
+            </button>
+            <button class="btn-sound" onclick="playStudioAudio('mic', this)">
+              <i data-lucide="mic-off" style="width: 14px; height: 14px;"></i>
+              <span>طقطقة المايك (Click)</span>
+            </button>
+            <button class="btn-sound" id="btnAmbience" onclick="toggleAmbience(this)">
+              <i data-lucide="activity" style="width: 14px; height: 14px;"></i>
+              <span id="ambienceText">أجواء الاستوديو (Hum)</span>
+            </button>
+            <button class="btn-sound" onclick="playStudioAudio('alert', this)">
+              <i data-lucide="shield-alert" style="width: 14px; height: 14px;"></i>
+              <span>تنبيه الأدلة (Alert)</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Quick Memory Pegs Widget -->
+        <section class="side-panel">
+          <div class="side-panel-header">
+            <h3 class="side-panel-title">
+              <i data-lucide="clock" style="width: 18px; height: 18px; color: var(--tertiary);"></i>
+              <span>شريط الأعمار القانونية السريع</span>
+            </h3>
+            <span style="font-size: 0.75rem; color: var(--tertiary); font-family: var(--font-label);">MCQ TIMELINE</span>
+          </div>
+
+          <div class="memory-peg-list">
+            <div class="peg-item" onclick="showQuickPeg(6, 'الضرس الدائم الأول واتحاد عظام الإسك والعانة (دخول المدرسة)')">
+              <span>دخول المدرسة</span>
+              <span class="peg-age">6 سنوات</span>
+            </div>
+            <div class="peg-item" onclick="showQuickPeg(7, 'سن التمييز وانعدام المسؤولية الجنائية تماماً')">
+              <span>سن التمييز</span>
+              <span class="peg-age">7 سنوات</span>
+            </div>
+            <div class="peg-item" onclick="showQuickPeg(12, 'حظر عمالة الأطفال ومسؤولية جزئية دون حبس')">
+              <span>عمالة الأطفال</span>
+              <span class="peg-age">12 سنة</span>
+            </div>
+            <div class="peg-item" onclick="showQuickPeg(14, 'اتحاد البكرة والرؤيس (العجز الفسيولوجي عن الاغتصاب)')">
+              <span>سن البلوغ</span>
+              <span class="peg-age">14 سنة</span>
+            </div>
+            <div class="peg-item" onclick="showQuickPeg(15, 'محكمة الأحداث واختفاء خط Y في حُق الحوض')">
+              <span>نهاية الحضانة</span>
+              <span class="peg-age">15 سنة</span>
+            </div>
+            <div class="peg-item" onclick="showQuickPeg(16, 'استخراج البطاقة الشخصية القانونية')">
+              <span>البطاقة الشخصية</span>
+              <span class="peg-age">16 سنة</span>
+            </div>
+            <div class="peg-item" onclick="showQuickPeg(17, 'المسؤولية الجنائية الكاملة (اللقيمة الإنسية للعضد)')">
+              <span>المسؤولية الجنائية الكاملة</span>
+              <span class="peg-age">17 سنة</span>
+            </div>
+            <div class="peg-item" onclick="showQuickPeg(18, 'التجنيد الأول والزواج والرضا (رأس الفخذ والعضد)')">
+              <span>التجنيد الأول والزواج</span>
+              <span class="peg-age">18 سنة</span>
+            </div>
+            <div class="peg-item" onclick="showQuickPeg(21, 'الحقوق المدنية والتجنيد الثاني (أشعة الركبة والحدبة الإسكية)')">
+              <span>الحقوق المدنية الكاملة</span>
+              <span class="peg-age">21 سنة</span>
+            </div>
+            <div class="peg-item" onclick="showQuickPeg(23, 'الترقوة وقاعدة الجمجمة (اكتمال نمو العظام)')">
+              <span>التحام الترقوة الأخير</span>
+              <span class="peg-age">23 سنة</span>
+            </div>
+          </div>
+        </section>
+
+      </aside>
+
+    </div>
+
+    <!-- GRAND INTERACTIVE MEMORY GYM SECTION -->
+    <section class="memory-gym-section" id="memoryGym">
+      <div class="gym-header">
+        <h2>ركن المراسي الذهنية والمختبر الجنائي التفاعلي</h2>
+        <p>تطبيق عملي مباشر لاستراتيجيات كيفن هورسلي في حفظ واسترجاع أصعب معضلات الطب الشرعي: مجسم الجسد الإشعاعي، حاسبة استبعاد الأبوة، وبنك الأسئلة السريع.</p>
+      </div>
+
+      <div class="gym-tabs">
+        <button class="gym-tab-btn active" onclick="switchGymTab('tab-body', this)">
+          <i data-lucide="user" style="width: 16px; height: 16px;"></i>
+          <span>1. مرساة الجسد للأعمار القانونية</span>
+        </button>
+        <button class="gym-tab-btn" onclick="switchGymTab('tab-paternity', this)">
+          <i data-lucide="git-fork" style="width: 16px; height: 16px;"></i>
+          <span>2. محاكي استبعاد الأبوة وفصائل الدم</span>
+        </button>
+        <button class="gym-tab-btn" onclick="switchGymTab('tab-quiz', this)">
+          <i data-lucide="check-square" style="width: 16px; height: 16px;"></i>
+          <span>3. تحدي الـ 5 أسئلة التنافسية (MCQ Gym)</span>
+        </button>
+      </div>
+
+      <!-- TAB 1: BODY PEGS INTERACTIVE -->
+      <div class="gym-tab-content active" id="tab-body">
+        <div class="body-pegs-layout">
+          <div class="body-visual-container">
+            <span style="font-family: var(--font-label); font-size: 0.8rem; color: var(--on-surface-variant); margin-bottom: var(--space-sm);">انقر على أي نقطة بالجسم لاستدعاء المرساة الذهنية:</span>
+            
+            <svg class="body-svg-frame" viewBox="0 0 240 420" xmlns="http://www.w3.org/2000/svg" aria-label="رسم توضيحي للجسد البشري بنقاط المراسي الإشعاعية">
+              <!-- Body Silhouette -->
+              <path d="M120 30 C132 30 142 42 142 58 C142 74 132 86 120 86 C108 86 98 74 98 58 C98 42 108 30 120 30 Z" fill="#1b1b2a" stroke="#5a5068" stroke-width="2"/>
+              <!-- Neck & Torso -->
+              <path d="M112 86 L128 86 L136 100 L165 115 L155 170 L145 220 L152 245 L88 245 L95 220 L85 170 L75 115 L104 100 Z" fill="#141424" stroke="#5a5068" stroke-width="2"/>
+              <!-- Arms -->
+              <path d="M75 115 L45 180 L35 240 L45 245 L60 190 L80 145 Z" fill="#141424" stroke="#5a5068" stroke-width="1.5"/>
+              <path d="M165 115 L195 180 L205 240 L195 245 L180 190 L160 145 Z" fill="#141424" stroke="#5a5068" stroke-width="1.5"/>
+              <!-- Legs -->
+              <path d="M96 245 L90 320 L85 390 L102 395 L112 320 L118 245 Z" fill="#141424" stroke="#5a5068" stroke-width="1.5"/>
+              <path d="M144 245 L150 320 L155 390 L138 395 L128 320 L122 245 Z" fill="#141424" stroke="#5a5068" stroke-width="1.5"/>
+
+              <!-- Interactive Hotspots (Circles) -->
+              <!-- Clavicle / Neck / 23 yrs -->
+              <circle class="body-hotspot" id="spot-23" cx="120" cy="100" r="12" fill="#ffe04a" opacity="0.85" onclick="selectBodyHotspot(23)"/>
+              <text x="120" y="104" text-anchor="middle" font-size="9" font-family="'Space Mono'" font-weight="bold" fill="#000" pointer-events="none">23</text>
+
+              <!-- Elbow / 14-17 yrs -->
+              <circle class="body-hotspot" id="spot-14" cx="50" cy="180" r="11" fill="#00ffcc" opacity="0.85" onclick="selectBodyHotspot(14)"/>
+              <text x="50" y="184" text-anchor="middle" font-size="9" font-family="'Space Mono'" font-weight="bold" fill="#000" pointer-events="none">14</text>
+
+              <circle class="body-hotspot" id="spot-17" cx="190" cy="180" r="11" fill="#ff2d78" opacity="0.85" onclick="selectBodyHotspot(17)"/>
+              <text x="190" y="184" text-anchor="middle" font-size="9" font-family="'Space Mono'" font-weight="bold" fill="#fff" pointer-events="none">17</text>
+
+              <!-- Pelvis / 15 yrs -->
+              <circle class="body-hotspot" id="spot-15" cx="120" cy="235" r="12" fill="#00ffcc" opacity="0.85" onclick="selectBodyHotspot(15)"/>
+              <text x="120" y="239" text-anchor="middle" font-size="9" font-family="'Space Mono'" font-weight="bold" fill="#000" pointer-events="none">15</text>
+
+              <!-- Hands / Femur Head / 18 yrs -->
+              <circle class="body-hotspot" id="spot-18" cx="35" cy="242" r="11" fill="#ff2d78" opacity="0.85" onclick="selectBodyHotspot(18)"/>
+              <text x="35" y="246" text-anchor="middle" font-size="9" font-family="'Space Mono'" font-weight="bold" fill="#fff" pointer-events="none">18</text>
+
+              <!-- Knee / 21 yrs -->
+              <circle class="body-hotspot selected" id="spot-21" cx="147" cy="320" r="13" fill="#ff2d78" opacity="0.9" onclick="selectBodyHotspot(21)"/>
+              <text x="147" y="324" text-anchor="middle" font-size="9" font-family="'Space Mono'" font-weight="bold" fill="#fff" pointer-events="none">21</text>
+            </svg>
+          </div>
+
+          <div class="body-detail-card" id="bodyDetailCard">
+            <span style="font-family: var(--font-label); font-size: 0.8rem; color: var(--tertiary);">المحطة الإشعاعية المختارة:</span>
+            <h3 id="bodyDetailAge">21 سنة: مفصل الركبة والحقوق المدنية</h3>
+            <p id="bodyDetailAnatomy" style="font-size: 0.95rem; color: var(--on-surface);">
+              <strong>المعيار التشريحي الإشعاعي:</strong> التحام النهاية السفلية لعظمة الفخذ مع النهاية العلوية لعظمة القصبة (مفصل الركبة <bdi dir="ltr">Knee Joint</bdi>)، والتحام مشاش الحدبة الإسكية بالحوض (<bdi dir="ltr">Ischial tuberosity</bdi>).
+            </p>
+            <div style="background: var(--surface-container-low); padding: var(--space-sm); border-radius: var(--rounded); margin-top: var(--space-sm);">
+              <span style="color: var(--secondary); font-weight: 700;">الأهمية الطبية القانونية (MLI):</span>
+              <p id="bodyDetailMli" style="margin: 0.2rem 0 0; font-size: 0.88rem; color: var(--on-surface-variant);">
+                بلوغ سن الرشد واكتساب كامل الحقوق المدنية، والاستدعاء الثاني للخدمة العسكرية (عبر فحص أشعة الركبة والحدبة الإسكية).
+              </p>
+            </div>
+            <div style="background: color-mix(in srgb, var(--primary) 12%, transparent); padding: var(--space-sm); border-radius: var(--rounded); margin-top: var(--space-sm); border-right: 3px solid var(--primary);">
+              <span style="color: var(--primary); font-weight: 700;">فيلم الذاكرة الخارق (Kevin Horsley S.E.E. Anchor):</span>
+              <p id="bodyDetailSee" style="margin: 0.2rem 0 0; font-size: 0.88rem; color: var(--on-surface);">
+                تخيل ركبتك تنفجر وتطلق 21 بالوناً نيون ساطعاً، وتخرج من صابونة الركبة بطاقة انتخابية ورتبة تجنيد عسكرية ترقصان سوياً!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: PATERNITY EXCLUSION CALCULATOR -->
+      <div class="gym-tab-content" id="tab-paternity">
+        <p style="font-size: 0.95rem; color: var(--on-surface-variant); margin-top: 0;">
+          تطبيق قواعد مندل الصارمة في نفي الأبوة الجنائية (<bdi dir="ltr">Good Negative Test</bdi>). اختر فصيلة دم الأم وفصيلة دم الأب المزعوم، وشاهد ما يفرضه القانون الشرعي فوراً:
+        </p>
+
+        <div class="paternity-grid">
+          <div class="paternity-input-group">
+            <label for="motherAbo">فصيلة دم الأم (<bdi dir="ltr">Mother's ABO</bdi>):</label>
+            <select id="motherAbo" class="paternity-select" onchange="computePaternityRules()">
+              <option value="O">Group O</option>
+              <option value="A" selected>Group A</option>
+              <option value="B">Group B</option>
+              <option value="AB">Group AB</option>
+            </select>
+
+            <label for="motherRh">عامل الريسوس للأم (<bdi dir="ltr">Mother's Rh</bdi>):</label>
+            <select id="motherRh" class="paternity-select" onchange="computePaternityRules()">
+              <option value="pos">Rh Positive (+ve)</option>
+              <option value="neg" selected>Rh Negative (-ve)</option>
+            </select>
+          </div>
+
+          <div class="paternity-input-group">
+            <label for="fatherAbo">فصيلة دم الأب المتنازع عليه (<bdi dir="ltr">Alleged Father's ABO</bdi>):</label>
+            <select id="fatherAbo" class="paternity-select" onchange="computePaternityRules()">
+              <option value="O">Group O</option>
+              <option value="A">Group A</option>
+              <option value="B" selected>Group B</option>
+              <option value="AB">Group AB</option>
+            </select>
+
+            <label for="fatherRh">عامل الريسوس للأب (<bdi dir="ltr">Father's Rh</bdi>):</label>
+            <select id="fatherRh" class="paternity-select" onchange="computePaternityRules()">
+              <option value="pos">Rh Positive (+ve)</option>
+              <option value="neg" selected>Rh Negative (-ve)</option>
+            </select>
+          </div>
+
+          <div class="paternity-result-box" id="paternityResultBox">
+            <h4 style="font-family: var(--font-headline); font-size: 1.15rem; margin: 0 0 var(--space-xs); color: var(--secondary);">
+              النتيجة الطبية القانونية لحكم المحكمة:
+            </h4>
+            <div style="margin-bottom: var(--space-sm);">
+              <span style="font-size: 0.85rem; color: var(--on-surface-variant);">الفصائل الممكنة بيولوجياً للطفل:</span>
+              <div class="rule-pill-list" id="possibleBloodList">
+                <span class="rule-pill possible">Group O</span>
+                <span class="rule-pill possible">Group A</span>
+                <span class="rule-pill possible">Group B</span>
+                <span class="rule-pill possible">Group AB</span>
+              </div>
+            </div>
+
+            <div style="margin-bottom: var(--space-sm);">
+              <span style="font-size: 0.85rem; color: var(--on-surface-variant);">الفصائل المستحيلة قطعياً (نفي بات وحاسم للأبوة):</span>
+              <div class="rule-pill-list" id="impossibleBloodList">
+                <span class="rule-pill impossible">لا توجد فصيلة مستحيلة في تزاوج A مع B</span>
+              </div>
+            </div>
+
+            <div style="background: var(--surface-container-low); padding: var(--space-sm); border-radius: var(--rounded); font-size: 0.85rem;" id="rhRulingText">
+              <strong>حكم عامل الريسوس (Rh):</strong> كلا الوالدين <bdi dir="ltr">Rh-ve</bdi>؛ وبالتالي يُستبعد الأب قطعياً إذا وُلد الطفل <bdi dir="ltr">Rh+ve</bdi>!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: MCQ COMPETITIVE GYM -->
+      <div class="gym-tab-content" id="tab-quiz">
+        <p style="font-size: 0.95rem; color: var(--on-surface-variant); margin-top: 0;">
+          اختبر حصيلتك وسرعة بديهتك في 4 من أصعب أسئلة امتحانات الطب الشرعي التي تناولتها الحلقة:
+        </p>
+
+        <!-- Question 1 -->
+        <div class="mcq-card" id="qCard1">
+          <p class="mcq-question">1. ما هي أكثر حالات الاستعراف صعوبة وتعقيداً بعد الوفاة (<bdi dir="ltr">Postmortem Identification</bdi>)؟</p>
+          <div class="mcq-options">
+            <button class="mcq-option-btn" onclick="checkMcq(1, 'A', false, this)"><span>أ. الحروق السطحية المتقيحة</span></button>
+            <button class="mcq-option-btn" onclick="checkMcq(1, 'B', false, this)"><span>ب. الغمر المطول في الماء (التشرب الرمي)</span></button>
+            <button class="mcq-option-btn" onclick="checkMcq(1, 'C', true, this)"><span>ج. التفحم الكامل (Complete charring)</span></button>
+            <button class="mcq-option-btn" onclick="checkMcq(1, 'D', false, this)"><span>د. الجروح الطعنية المتعددة</span></button>
+          </div>
+          <div class="mcq-explanation" id="exp1">
+            <strong>الإجابة الصحيحة: ج (Complete charring).</strong> التفحم التام يحرق ويدمر كافة الأنسجة السطحية والجلدية والملامح الوجهية، مما يجعل الاستعراف الظاهري مستحيلاً تماماً، ويجبرنا على اللجوء للأسنان وعظام النخاع العميقة.
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="mcq-card" id="qCard2">
+          <p class="mcq-question">2. أي مما يلي هو الوسيلة الأكثر حسماً للتفريد والتمييز بين توأمين متطابقين أحاديي البويضة (<bdi dir="ltr">Uniovular Twins</bdi>)؟</p>
+          <div class="mcq-options">
+            <button class="mcq-option-btn" onclick="checkMcq(2, 'A', false, this)"><span>أ. البصمة الوراثية النووية (nuDNA)</span></button>
+            <button class="mcq-option-btn" onclick="checkMcq(2, 'B', true, this)"><span>ب. بصمات الأصابع (Fingerprints)</span></button>
+            <button class="mcq-option-btn" onclick="checkMcq(2, 'C', false, this)"><span>ج. فصيلة الدم وعامل الريسوس</span></button>
+            <button class="mcq-option-btn" onclick="checkMcq(2, 'D', false, this)"><span>د. لون وقزحية العين</span></button>
+          </div>
+          <div class="mcq-explanation" id="exp2">
+            <strong>الإجابة الصحيحة: ب (بصمات الأصابع).</strong> التوائم المتطابقة تتشارك نفس الحمض النووي 100%، لكن بصمات أصابعهم تتشكل في الأسبوع الـ 16 داخل الرحم بتأثيرات حركة الجنين العشوائية وتكون فريدة ومستحيلة التكرار!
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="mcq-card" id="qCard3">
+          <p class="mcq-question">3. ما هو الاختبار التأكيدي المجهري الذي ينتج بلورات وردية إبرية الشكل من الهيموكروموجين؟</p>
+          <div class="mcq-options">
+            <button class="mcq-option-btn" onclick="checkMcq(3, 'A', false, this)"><span>أ. اختبار تيخمان (Teichmann's test)</span></button>
+            <button class="mcq-option-btn" onclick="checkMcq(3, 'B', true, this)"><span>ب. اختبار تاكاياما (Takayama test)</span></button>
+            <button class="mcq-option-btn" onclick="checkMcq(3, 'C', false, this)"><span>ج. اختبار كاستل ماير (Kastle-Meyer)</span></button>
+            <button class="mcq-option-btn" onclick="checkMcq(3, 'D', false, this)"><span>د. اختبار البنزيدين المؤكسد</span></button>
+          </div>
+          <div class="mcq-explanation" id="exp3">
+            <strong>الإجابة الصحيحة: ب (اختبار تاكاياما).</strong> تاكاياما ينتج بلورات وردية إبرية (<bdi dir="ltr">Pink needle-shaped crystals of haemochromogen</bdi>)، بينما تيخمان ينتج بلورات بنية معينية من الهيمين (<bdi dir="ltr">Brown rhombic haemin crystals</bdi>).
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="mcq-card" id="qCard4">
+          <p class="mcq-question">4. يُستدل شعاعياً على سن الحقوق المدنية الكاملة والاستدعاء الثاني للتجنيد (21 سنة) بفحص أشعة على:</p>
+          <div class="mcq-options">
+            <button class="mcq-option-btn" onclick="checkMcq(4, 'A', false, this)"><span>أ. عظم القص والترقوة</span></button>
+            <button class="mcq-option-btn" onclick="checkMcq(4, 'B', false, this)"><span>ب. عظام المرفق والكعبرة</span></button>
+            <button class="mcq-option-btn" onclick="checkMcq(4, 'C', true, this)"><span>ج. مفصل الركبة (أسفل الفخذ وأعلى القصبة)</span></button>
+            <button class="mcq-option-btn" onclick="checkMcq(4, 'D', false, this)"><span>د. دروز عظام الجمجمة</span></button>
+          </div>
+          <div class="mcq-explanation" id="exp4">
+            <strong>الإجابة الصحيحة: ج (مفصل الركبة).</strong> تمام سن 21 سنة يتميز بالتحام عظام مفصل الركبة (النهاية السفلية للفخذ والعلوية للقصبة) ومشاش الحدبة الإسكية بالحوض.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Studio Footer -->
+    <footer class="studio-footer">
+      <div>
+        <span>الملف 99 | THE FORENSIC FILES — إنتاج إذاعي وتعليمي تفاعلي</span>
+      </div>
+      <div>
+        <span>المصادر: مبادئ الطب الشرعي والاستعراف الجنائي • كتاب Unlimited Memory لكيفن هورسلي</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    // Initialize Lucide Icons safely
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+      }
+      initTimer();
+      computePaternityRules();
+    });
+
+    /* =========================================================
+       1. ELAPSED BROADCAST TIMER
+       ========================================================= */
+    let elapsedSeconds = 0;
+    function initTimer() {
+      setInterval(function() {
+        elapsedSeconds++;
+        const mins = String(Math.floor(elapsedSeconds / 60)).padStart(2, '0');
+        const secs = String(elapsedSeconds % 60).padStart(2, '0');
+        const timerEl = document.getElementById('elapsedTimer');
+        if (timerEl) {
+          timerEl.textContent = `${mins}:${secs}`;
+        }
+      }, 1000);
+    }
+
+    /* =========================================================
+       2. TELEPROMPTER READER ENGINE
+       ========================================================= */
+    let isPrompterRunning = false;
+    let prompterSpeed = 1.0;
+    let prompterInterval = null;
+    let currentFontSizePx = 17;
+
+    function toggleTeleprompter() {
+      isPrompterRunning = !isPrompterRunning;
+      const btn = document.getElementById('btnTogglePrompter');
+      const text = document.getElementById('prompterPlayText');
+      const icon = document.getElementById('prompterPlayIcon');
+
+      if (isPrompterRunning) {
+        if (btn) btn.classList.add('primary-active');
+        if (text) text.textContent = 'إيقاف التلقين';
+        if (icon) icon.setAttribute('data-lucide', 'pause');
+        startAutoScroll();
+        playStudioAudio('click');
+      } else {
+        if (btn) btn.classList.remove('primary-active');
+        if (text) text.textContent = 'متابعة التلقين';
+        if (icon) icon.setAttribute('data-lucide', 'play');
+        stopAutoScroll();
+      }
+      if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+      }
+    }
+
+    function startAutoScroll() {
+      if (prompterInterval) clearInterval(prompterInterval);
+      prompterInterval = setInterval(function() {
+        window.scrollBy({ top: 1.6 * prompterSpeed, behavior: 'auto' });
+        updatePrompterProgress();
+      }, 30);
+    }
+
+    function stopAutoScroll() {
+      if (prompterInterval) {
+        clearInterval(prompterInterval);
+        prompterInterval = null;
+      }
+    }
+
+    function resetPrompter() {
+      stopAutoScroll();
+      isPrompterRunning = false;
+      const btn = document.getElementById('btnTogglePrompter');
+      const text = document.getElementById('prompterPlayText');
+      const icon = document.getElementById('prompterPlayIcon');
+      if (btn) btn.classList.remove('primary-active');
+      if (text) text.textContent = 'بدء التلقين التلقائي';
+      if (icon) icon.setAttribute('data-lucide', 'play');
+
+      const feed = document.getElementById('scriptFeed');
+      if (feed) {
+        feed.scrollIntoView({ behavior: 'smooth' });
+      }
+      const fill = document.getElementById('prompterProgressFill');
+      if (fill) fill.style.width = '0%';
+      if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+      }
+    }
+
+    function setScrollSpeed(speed, btnEl) {
+      prompterSpeed = speed;
+      const btns = [document.getElementById('spd1'), document.getElementById('spd15'), document.getElementById('spd2')];
+      btns.forEach(function(b) {
+        if (b) b.classList.remove('active');
+      });
+      if (btnEl) btnEl.classList.add('active');
+      if (isPrompterRunning) {
+        startAutoScroll();
+      }
+    }
+
+    function adjustScriptFontSize(delta) {
+      currentFontSizePx = Math.max(14, Math.min(26, currentFontSizePx + delta));
+      const dialogues = document.querySelectorAll('.speech-content');
+      dialogues.forEach(function(el) {
+        el.style.fontSize = currentFontSizePx + 'px';
+      });
+    }
+
+    function updatePrompterProgress() {
+      const feed = document.getElementById('scriptFeed');
+      if (!feed) return;
+      const rect = feed.getBoundingClientRect();
+      const totalHeight = feed.offsetHeight;
+      const windowHeight = window.innerHeight;
+      const scrolled = windowHeight - rect.top;
+      let pct = Math.max(0, Math.min(100, Math.round((scrolled / totalHeight) * 100)));
+      const fill = document.getElementById('prompterProgressFill');
+      if (fill) fill.style.width = pct + '%';
+    }
+
+    window.addEventListener('scroll', updatePrompterProgress);
+
+    function filterSpeakers(val) {
+      const cards = document.querySelectorAll('.dialogue-card[data-speaker]');
+      cards.forEach(function(card) {
+        const spk = card.getAttribute('data-speaker');
+        if (val === 'all' || val === spk) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function jumpToScene(sceneId, chipEl) {
+      const sceneEl = document.getElementById(sceneId);
+      if (sceneEl) {
+        sceneEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      const chips = document.querySelectorAll('.scene-chip');
+      chips.forEach(function(c) { c.classList.remove('active'); });
+      if (chipEl) chipEl.classList.add('active');
+    }
+
+    /* =========================================================
+       3. BUZZWORDS INSPECTOR DICTIONARY
+       ========================================================= */
+    const buzzwordData = {
+      'charring': {
+        badge: 'قاعدة الامتحان الكبرى • MCQ',
+        title: 'التفحم الكامل (Complete Charring)',
+        def: 'أقصى درجات الاحتراق الحراري حيث تفنى الأنسجة الرخوة والملامح الوجهية وبصمات الجلد بالكامل.',
+        rule: 'أصعب حالات الاستعراف بعد الوفاة على الإطلاق؛ ويعتمد حصرياً على سجلات الأسنان والـ DNA المستخلص من نخاع العظم أو لب السن.',
+        memory: 'تخيل سناً عملاقاً يرتدي خوذة رجل إطفاء مضادة للحريق، ويبتسم بثقة وسط بركان ناري!'
+      },
+      'complete-id': {
+        badge: 'المصطلح القانوني',
+        title: 'الاستعراف الكامل (Complete Identification)',
+        def: 'التحديد المطلق والنهائي لشخصية المتوفى أو الحي باسمه الرباعي وسجله المدني الرسمي.',
+        rule: 'يُشترط في إصدار شهادات الوفاة الرسمية، ونقل الملكية والإرث، وحسم قضايا القتل العمد.',
+        memory: 'تخيل ختماً ذهبياً حكومياً ضخماً يُطبع على جبين الشخص ليظهر اسمه الرباعي بضوء نيون!'
+      },
+      'partial-id': {
+        badge: 'المصطلح الجنائي',
+        title: 'الاستعراف الجزئي (Partial Identification)',
+        def: 'تحديد خصائص فئوية فقط مثل الجنس، العمر، الطول، أو فصيلة الدم، دون معرفة الاسم الصريح.',
+        rule: 'يساعد في تقليص وتضييق دائرة البحث وحصر المشتبه بهم أو المفقودين فقط ولا يعطي يقيناً حاسماً.',
+        memory: 'تخيل منخلاً عملاقاً يسقط منه كل الناس، ولا يتبقى في المنخل إلا الرجال طوال القامة ذوو فصيلة A!'
+      },
+      'positive-id': {
+        badge: 'التفريد القطعي',
+        title: 'الاستعراف الإيجابي (Individualization)',
+        def: 'إثبات قاطع للهوية عبر دلائل حيوية فريدة ومطلقة كالبصمات، الحمض النووي، أو سجلات الأسنان.',
+        rule: 'الدليل الوحيد المقبول قانونياً لإسناد جريمة قتل أو حسم هوية متوفى في الكوارث الفردية.',
+        memory: 'تخيل قفل خزانة لا يفتح إلا بمفتاح واحد مصنوع من خطوط بصمة أصبعك الفريدة.'
+      },
+      'exclusion-id': {
+        badge: 'حالات الكوارث',
+        title: 'الاستعراف بالاستبعاد (Identification by Exclusion)',
+        def: 'عملية استبعاد الهويات المعروفة تباعاً من قائمة مغلقة حتى يتبقى شخص واحد لا غيره.',
+        rule: 'يُطبق حصرياً في الكوارث المغلقة مثل سقوط طائرة ركاب معروفة القائمة أو انفجار منجم محدد العمال.',
+        memory: 'تخيل قائمة ركاب طائرة تشطب أسماءهم قلماً أحمر واحداً تلو الآخر حتى يتبقى اسم وحيد!'
+      },
+      'juvenile': {
+        badge: 'المسؤولية الجنائية',
+        title: 'محاكمة الأحداث الجنائية (Juvenile Offenders)',
+        def: 'تحديد أعمار المتهمين بين 12 و18 عاماً عند غياب شهادة الميلاد لتقرير اختصاص المحكمة.',
+        rule: 'سيناريو جنائي (وليس مدنياً) لأن نتيجته تحدد إما إيداع في دور رعاية أو عقوبات مخففة أو الإحالة للجنايات.',
+        memory: 'تخيل ميزان عدالة، في إحدى كفتيه شهادة ميلاد وفي الكفة الأخرى أشعة عظام مفصل المرفق!'
+      },
+      'prostate-uterus': {
+        badge: 'مقاومة التعفن • سؤال امتحان',
+        title: 'صمود البروستاتا والرحم غير الحامل',
+        def: 'الأعضاء التناسلية الداخلية تتميز بصلابة ليفية وعزل حوضي يجعلها تقاوم التفسخ والتعفن لأطول فترة.',
+        rule: 'البروستاتا هي آخر عضو يتعفن في الذكر، والرحم غير الحامل هو آخر عضو يتعفن في الأنثى.',
+        memory: 'تخيل درعاً فولاذياً يحمي البروستاتا والرحم بينما تتلاشى باقي أنسجة الجسم المحيطة بهما!'
+      },
+      'antemortem': {
+        badge: 'طب الأسنان الشرعي',
+        title: 'سجلات ما قبل الوفاة (Antemortem Records)',
+        def: 'الأشعة السينية، الرسوم البيانية، حشوات الأسنان، وعمليات الخلع التي أجراها الشخص في حياته.',
+        rule: 'يُقارن بها فحص ما بعد الوفاة (Postmortem) لتحقيق تطابق قطعي في حالات الجثث المتفحمة.',
+        memory: 'تخيل صورة بانوراما لأسنانك تتحول إلى بازل يطابق سنّاً بسن مع جمجمة الضحية!'
+      },
+      'burtonian-line': {
+        badge: 'تسمم المعادن • MCQ',
+        title: 'خط بورتون الأزرق (Lead - Burtonian Line)',
+        def: 'ترسيب كبريتيد الرصاص في أنسجة اللثة تحت تأثير بكتيريا الفم في حالات التسمم المزمن بالرصاص.',
+        rule: 'خط أزرق على حافة اللثة = رصاص؛ خط رمادي = زئبق؛ خط أخضر = نحاس؛ خط أسود = بزموت.',
+        memory: 'تخيل قلماً رصاصاً أزرق عملاقاً يرسم خطاً دقيقاً على طول لثة المريض!'
+      },
+      'fingerprints': {
+        badge: 'سيدة الأدلة',
+        title: 'علم البصمات (Dactylography & Poroscopy)',
+        def: 'دراسة الخطوط الحلمية والمسام العرقية على أطراف الأصابع للاستعراف الفردي المطلق.',
+        rule: 'احتمال تطابق بصمتين هو 1 في 64 مليار. البصمات تتكون في الأسبوع الـ 16 من الحمل ولا تتغير طوال العمر.',
+        memory: 'تخيل بصمة إصبعك منقوشة في حجر صوان عمره ملايين السنين ومحاطة بـ 64 مليار نجمة!'
+      },
+      'uniovular-twins': {
+        badge: 'لغز التوائم • MCQ',
+        title: 'التوأم أحادي البويضة (Uniovular / Identical Twins)',
+        def: 'توأمان ناتجان عن انقسام بويضة مخصبة واحدة، يملكان حمضاً نووياً (DNA) متطابقاً بنسبة 100%.',
+        rule: 'الحمض النووي يعجز عن التمييز بينهما في الجرائم، لكن بصمات أصابعهما مختلفة ومتباينة حتماً!',
+        memory: 'تخيل توأمين يرتديان نفس القناع بالضبط، لكن أحدهما يضع بصمته على شاشة ليزر فتكشفه فوراً!'
+      },
+      '16-week-iul': {
+        badge: 'التكوين الجنيني',
+        title: 'الأسبوع الـ 16 للحياة الجنينية (16th Week IUL)',
+        def: 'الموعد الدقيق لاكتمال وتثبت الخطوط الحلمية للبصمات في جلد الجنين داخل الرحم.',
+        rule: 'تظل البصمات ثابتة بنفس التفاصيل حتى بعد الوفاة والتحلل إلا إذا دُمرت الأدمة العميقة.',
+        memory: 'تخيل جنيناً صغيراً في الشهر الرابع يوقع عقداً غير قابل للتعديل ببصمة إبهامه الدقيقة!'
+      },
+      'dermal-rule': {
+        badge: 'تلف الحلمات',
+        title: 'قاعدة تلف البشرة والأدمة (Dermal vs Epidermal Rule)',
+        def: 'تلف البشرة السطحية يلتئم بنمو البصمة المتطابقة؛ أما تلف الأدمة العميقة فيخلف ندبة دائمة.',
+        rule: 'الندبة الناتجة عن تدمير الأدمة لا تطمس الهوية بل تضيف معلماً تفريدياً فريداً يُسهل الاستعراف.',
+        memory: 'تخيل جلداً يقطع بالسكين فيترك سحاباً معدنياً دائماً (ندبة) يصبح توقيعاً لصاحبه!'
+      },
+      'celiac-atrophy': {
+        badge: 'فخاخ الأمراض • MCQ',
+        title: 'ضمور البصمات المؤقت العكوس',
+        def: 'اختفاء مؤقت لبروز الخطوط الحلمية بسبب سوء الامتصاص في حساسية القمح (Celiac) والإكزيما.',
+        rule: 'ضمور عكوس (يزول بالعلاج) في السيلياك والإكزيما؛ وضمور دائم لا رجعة فيه في الجذام والإشعاع.',
+        memory: 'تخيل سنبلة قمح تمسح حبر البصمة كالممحاة، وبمجرد إبعاد السنبلة يعود الحبر للظهور!'
+      },
+      'pelvis-accuracy': {
+        badge: 'دقة العظام • MCQ',
+        title: 'دقة الحوض في تحديد الجنس (95% Accuracy)',
+        def: 'عظام الحوض هي الأكثر تمايزاً جنسياً في الهيكل العظمي بسبب التكيف التطوري مع الحمل والولادة.',
+        rule: 'الحوض وحده: 95%؛ الجمجمة وحدها: 90%؛ الحوض والجمجمة معاً: 98%؛ العظام الطويلة: 70-80%.',
+        memory: 'تخيل حوضاً عظمياً يرتدي تاج الملك الذهبي ويحمل لوحة كتب عليها 95% بالنيون!'
+      },
+      'humerus-least': {
+        badge: 'أقل العظام نفعاً • MCQ',
+        title: 'عظمة العضد شعاعياً (Humerus is Least Helpful)',
+        def: 'عظمة العضد تظهر أدنى درجات التمايز الجنسي بين الذكر والأنثى مقارنة بالحوض والجمجمة والقص.',
+        rule: 'سؤال امتحان متكرر: أقل جزء في الهيكل العظمي إفادة في تحديد الجنس شعاعياً هو عظمة العضد.',
+        memory: 'تخيل ذراعاً يحاول التحدث في المحكمة والقاضي يرفع له بطاقة حمراء ويقول: شهادتك غير مفيدة!'
+      },
+      'subpubic-angle': {
+        badge: 'تمايز الحوض',
+        title: 'القوس العاني (Subpubic Angle)',
+        def: 'الزاوية المتكونة تحت الارتفاق العاني: حادة كحرف V في الذكور، ومنفرجة كحرف U في الإناث.',
+        rule: 'الزاوية المنفرجة (>90°) تسمح بمرور رأس الجنين أثناء الولادة وهي العلامة الأكثر موثوقية.',
+        memory: 'تخيل مظلة شاطئ مفتوحة على وسعها على شكل حرف U، بينما سهم حاد ضيق يمثل زاوية الذكر!'
+      },
+      'obturator-foramen': {
+        badge: 'تمايز الحوض',
+        title: 'الثقبة السدادية (Obturator Foramen)',
+        def: 'فتحة عظمية في الحوض: بيضاوية وكبيرة في الذكور، ومثلثة الشكل وأصغر حجماً في الإناث.',
+        rule: 'الذكر: بيضاوي كبير؛ الأنثى: مثلث صغير.',
+        memory: 'تخيل بيضة دجاجة عملاقة في حوض الرجل ومثلث بيتزا صغير في حوض المرأة!'
+      },
+      'femur-height': {
+        badge: 'تقدير القامة',
+        title: 'عظمة الفخذ والقامة (Femur = 25% of Height)',
+        def: 'عظمة الفخذ هي العظمة الأكثر موثوقية إحصائياً وشعاعياً لتقدير طول القامة الكلي للشخص.',
+        rule: 'طول الفخذ يمثل ربع قامة الإنسان (0.25 × الطول)؛ بينما باع الذراعين (Arm Span) يعادل 100%.',
+        memory: 'تخيل مسطرة بطول 100 سم، عظمة الفخذ تحتل أول 25 سم منها بدقة متناهية!'
+      },
+      'age-17': {
+        badge: 'المسؤولية الجنائية • MCQ',
+        title: 'سن 17 عاماً (Complete Criminal Responsibility)',
+        def: 'التحام اللقيمة الإنسية لعظمة العضد (Medial Epicondyle) وأعلى الكعبرة.',
+        rule: 'بتمام هذا الالتحام الشعاعي يبلغ الشخص سن المسؤولية الجنائية الكاملة ويُحاكم كبالغ مسؤول.',
+        memory: 'تخيل الكوع يطلق صوتاً ميكانيكياً ويقفل قفلاً حديدياً كُتب عليه: سن المسؤولية 17!'
+      },
+      'age-18': {
+        badge: 'التجنيد الأول والزواج • MCQ',
+        title: 'سن 18 عاماً (1st Military Call & Marriage)',
+        def: 'اتحاد رأس الفخذ والعضد ومشطيات اليد عند الذكور.',
+        rule: 'الاستدعاء الأول للتجنيد الإجباري، السن القانوني للزواج، ورضا الفتاة في قضايا الاغتصاب.',
+        memory: 'تخيل شاباً يقفز برأس فخذه ليرتدي بدلة الجيش العسكرية وخاتم الزواج في وقت واحد!'
+      },
+      'age-21': {
+        badge: 'الحقوق المدنية • MCQ',
+        title: 'سن 21 عاماً (Full Civil Rights & Knee X-ray)',
+        def: 'التحام عظام مفصل الركبة (أسفل الفخذ وأعلى القصبة) والحدبة الإسكية بالحوض.',
+        rule: 'سن الرشد التام، الحقوق المدنية الكاملة، والاستدعاء الثاني للتجنيد (يُثبت بأشعة الركبة).',
+        memory: 'تخيل مفصل ركبة يشع ضوءاً أخضر ويسلم صاحبه مفتاح سيارة وبطاقة تصويت برلمانية!'
+      },
+      'takayama': {
+        badge: 'فحص الدم التأكيدي • MCQ',
+        title: 'اختبار تاكاياما (Takayama Test)',
+        def: 'إضافة كاشف تاكاياما (بيريدين + جلوكوز + هيدروكسيد صوديوم) مع تسخين هادئ لمستخلص الدم.',
+        rule: 'يُنتج بلورات وردية إبرية الشكل من الهيموكروموجين (Pink needle-shaped crystals). شديد الحساسية ويعمل على البقع القديمة.',
+        memory: 'تخيل قطار تاكاياما الياباني السريع لونه وردي، ويخرج من مداخنه إبر وردية حادة متلألئة!'
+      },
+      'precipitin': {
+        badge: 'تحديد فصيلة النوع',
+        title: 'اختبار الترسيب (Precipitin Test)',
+        def: 'تفاعل مناعي بين بروتين الدم في البقعة والمصل المضاد لبروتينات الإنسان المأخوذ من الأرانب.',
+        rule: 'ظهور حلقة بيضاء عند نقطة التلاقي في الأنبوب يعني حتماً أن الدم أو النسيج من أصل بشري.',
+        memory: 'تخيل خاتم زواج من الألماس الأبيض الناصع يتشكل سحرياً داخل أنبوب الاختبار!'
+      },
+      'renal-failure': {
+        badge: 'نقل الدم الخاطئ • MCQ',
+        title: 'الفشل الكلوي الحاد (Acute Renal Failure)',
+        def: 'تكسر كرات الدم الحمراء المنقولة خطأً وترسيب أسطوانات الهيماتين الحمضي في أنابيب الكلى.',
+        rule: 'السبب المباشر الأول للوفاة في حالات عدم توافق فصائل الدم المنقولة.',
+        memory: 'تخيل كليتين تنسد مسامهما بحبيبات حمضية سوداء وتتوقفان عن العمل بإشارة إنذار حمراء!'
+      },
+      'see-principle': {
+        badge: 'استراتيجية هورسلي للذاكرة',
+        title: 'مبدأ S.E.E. Principle للخبير كيفن هورسلي',
+        def: 'S: Senses (إشراك الحواس الخمس) • E: Exaggeration (المبالغة والفكاهة) • E: Energize (الحركة والاصطدام).',
+        rule: 'الذاكرة لا تخزن الكلمات المجردة؛ بل تخزن الصور غير المنطقية والمتحركة ومتعددة الحواس.',
+        memory: 'تخيل فيلاً ضخماً يرتدي مايوه بكيني وردي فاقع، ويرقص التانغو حاملاً كتاب الطب الشرعي!'
+      },
+      'review-renew': {
+        badge: 'منحنى شبيتزر للنسيان',
+        title: 'المراجعة لتجديد الذاكرة (Review to Renew)',
+        def: 'وضع غطاء محكم على التعلم؛ فالطالب يفقد 82% من معلوماته خلال 28 يوماً بلا مراجعة منظمة.',
+        rule: 'المراجعة الدورية بعد يوم، ثم أسبوع، ثم 28 يوماً تحول الذاكرة المؤقتة إلى دائمة مدى الحياة.',
+        memory: 'تخيل قِدر ضغط يغلي بالمعلومات، وتضع عليه غطاءً فولاذياً محكماً يمنع أي بخار من الهروب!'
+      }
+    };
+
+    function inspectBuzzword(key) {
+      const data = buzzwordData[key];
+      if (!data) return;
+
+      const container = document.getElementById('inspectorContainer');
+      if (!container) return;
+
+      container.innerHTML = `
+        <div class="buzzword-inspector" id="activeInspector">
+          <span class="inspector-badge">${data.badge}</span>
+          <h4 class="inspector-title">${data.title}</h4>
+          <p class="inspector-def">${data.def}</p>
+          <div class="inspector-rule-box">
+            <strong>قاعدة الامتحان:</strong> ${data.rule}
+          </div>
+          <div class="inspector-memory-box">
+            <strong>مرساة S.E.E.:</strong> ${data.memory}
+          </div>
+        </div>
+      `;
+
+      // Highlight active in prominent deck
+      const panel = container.closest('.side-panel');
+      if (panel) {
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      playStudioAudio('click');
+    }
+
+    /* =========================================================
+       4. WEB AUDIO SYNTHESIZER (NO EXTERNAL AUDIO FILES)
+       ========================================================= */
+    let audioCtx = null;
+    let ambienceNode = null;
+    let isAmbiencePlaying = false;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playStudioAudio(type, btnEl) {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
+      if (btnEl) {
+        btnEl.classList.add('is-playing');
+        setTimeout(() => btnEl.classList.remove('is-playing'), 400);
+      }
+
+      if (type === 'chime') {
+        // High harmonic broadcast chime
+        const now = ctx.currentTime;
+        const freqs = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+        freqs.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+
+          gain.gain.setValueAtTime(0, now + idx * 0.08);
+          gain.gain.linearRampToValueAtTime(0.2, now + idx * 0.08 + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.08 + 0.6);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc.start(now + idx * 0.08);
+          osc.stop(now + idx * 0.08 + 0.65);
+        });
+      } else if (type === 'mic') {
+        // Mechanical mic click / pop
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(140, now);
+        osc.frequency.exponentialRampToValueAtTime(40, now + 0.05);
+
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.06);
+      } else if (type === 'alert') {
+        // Crime Scene Alert Sting
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(880, now);
+        osc.frequency.setValueAtTime(440, now + 0.12);
+
+        gain.gain.setValueAtTime(0.15, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.36);
+      } else if (type === 'click') {
+        // Soft button feedback
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(440, now);
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.04);
+      }
+    }
+
+    function toggleAmbience(btnEl) {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
+      const text = document.getElementById('ambienceText');
+
+      if (!isAmbiencePlaying) {
+        // Synthesize soft analog studio hum / warm drone
+        const osc1 = ctx.createOscillator();
+        const osc2 = ctx.createOscillator();
+        const filter = ctx.createBiquadFilter();
+        const gain = ctx.createGain();
+
+        osc1.type = 'sawtooth';
+        osc1.frequency.value = 55; // A1
+        osc2.type = 'sine';
+        osc2.frequency.value = 110; // A2
+
+        filter.type = 'lowpass';
+        filter.frequency.value = 180; // warm muffling
+
+        gain.gain.setValueAtTime(0.001, ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.05, ctx.currentTime + 1.0);
+
+        osc1.connect(filter);
+        osc2.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc1.start();
+        osc2.start();
+
+        ambienceNode = { osc1, osc2, gain };
+        isAmbiencePlaying = true;
+        if (btnEl) btnEl.classList.add('is-playing');
+        if (text) text.textContent = 'إيقاف الأجواء (ON)';
+      } else {
+        if (ambienceNode) {
+          ambienceNode.gain.gain.linearRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+          setTimeout(() => {
+            if (ambienceNode) {
+              ambienceNode.osc1.stop();
+              ambienceNode.osc2.stop();
+              ambienceNode = null;
+            }
+          }, 550);
+        }
+        isAmbiencePlaying = false;
+        if (btnEl) btnEl.classList.remove('is-playing');
+        if (text) text.textContent = 'أجواء الاستوديو (Hum)';
+      }
+    }
+
+    function showQuickPeg(age, desc) {
+      selectBodyHotspot(age);
+      const gym = document.getElementById('memoryGym');
+      if (gym) {
+        gym.scrollIntoView({ behavior: 'smooth' });
+      }
+      switchGymTab('tab-body', document.querySelector('.gym-tab-btn'));
+    }
+
+    /* =========================================================
+       5. MEMORY GYM TABS & BODY PEGS
+       ========================================================= */
+    function switchGymTab(tabId, btnEl) {
+      const contents = document.querySelectorAll('.gym-tab-content');
+      contents.forEach(c => c.classList.remove('active'));
+
+      const btns = document.querySelectorAll('.gym-tab-btn');
+      btns.forEach(b => b.classList.remove('active'));
+
+      const activeTab = document.getElementById(tabId);
+      if (activeTab) activeTab.classList.add('active');
+      if (btnEl) btnEl.classList.add('active');
+
+      playStudioAudio('click');
+    }
+
+    const bodyData = {
+      14: {
+        title: '14 سنة: اتحاد البكرة والرؤيس (العجز الفسيولوجي)',
+        anatomy: 'اتحاد البكرة (Trochlea) مع الرؤيس (Capitulum) عند النهاية السفلية لعظمة العضد في مفصل المرفق.',
+        mli: 'سن البلوغ الطبي؛ واستحالة ارتكاب جريمة الاغتصاب فسيولوجياً لمن هم دون 14 سنة.',
+        see: 'تخيل ميكانيكياً عبقرياً عمره 14 سنة يركب بكرة سيارة عملاقة على مرفقه، فتمنعه من الحركة وتطلق صافرة طفولية!'
+      },
+      15: {
+        title: '15 سنة: محكمة الأحداث ونهاية الحضانة',
+        anatomy: 'اتحاد البكرة والرؤيس مع عظمة العضد؛ والتحام عظام الحرقفة والإسك والعانة واختفاء درز Y في حُق الحوض (Acetabulum Y-suture).',
+        mli: 'نهاية حضانة الأم قانونياً؛ وخضوع المتهم لعقوبات محكمة الأحداث المخففة دون السجن المشدد.',
+        see: 'تخيل حرف Y عملاقاً مصنوعاً من الشوكولاتة يذوب تماماً داخل تجويف الحوض، بينما يركض فتى نحو محكمة صغيرة كُتب عليها للأحداث فقط!'
+      },
+      17: {
+        title: '17 سنة: المسؤولية الجنائية الكاملة (Complete Criminal Responsibility)',
+        anatomy: 'اتحاد اللقيمة الإنسية لعظمة العضد (Medial Epicondyle) مع النهاية العلوية لعظمة الكعبرة.',
+        mli: 'بلوغ سن المسؤولية الجنائية الكاملة عن جميع الجرائم والمحاكمة أمام محاكم الجنايات العادية.',
+        see: 'تخيل قاضياً حازماً يطرق بمطرقته الخشبية الضخمة مباشرة فوق اللقيمة الإنسية لمرفقك فيشتعل ضوء أحمر يصرخ: مسؤول تماماً!'
+      },
+      18: {
+        title: '18 سنة: التجنيد الأول والزواج والرضا',
+        anatomy: 'اتحاد رأس عظمة الفخذ (Head of femur) ورأس العضد، والتحام مشطيات اليد والسلاميات عند الذكور.',
+        mli: 'الاستدعاء الأول للتجنيد الإجباري، السن القانوني للزواج، والأهلية القانونية للرضا في الاغتصاب للأنثى، ورخصة القيادة والتصويت.',
+        see: 'تخيل رأس الفخذ يتحول إلى قبعة عسكرية مقاتلة، بينما مشطيات اليد توقع على وثيقة زواج رسمية ورخصة قيادة نيون!'
+      },
+      21: {
+        title: '21 سنة: الحقوق المدنية الكاملة والتجنيد الثاني',
+        anatomy: 'التحام النهاية السفلية للفخذ والعلوية للقصبة والشظية (مفصل الركبة Knee Joint) ومشاش الحدبة الإسكية (Ischial Tuberosity).',
+        mli: 'بلوغ سن الرشد القانوني لكامل المعاملات المالية والمدنية، والاستدعاء الثاني للتجنيد الإجباري (يُثبت بأشعة الركبة).',
+        see: 'تخيل ركبتك تنفجر وتطلق 21 بالوناً نيون ساطعاً، وتخرج من صابونة الركبة بطاقة انتخابية ورتبة تجنيد عسكرية ترقصان سوياً!'
+      },
+      23: {
+        title: '23 سنة: التحام النهاية القصية للترقوة وقاعدة الجمجمة',
+        anatomy: 'التحام النهاية القصية للترقوة (Sternal end of clavicle) مع جسمها، والتحام Basiocciput مع Basisphenoid بقاعدة الجمجمة.',
+        mli: 'آخر التحام عظمي في الهيكل البشري؛ ويؤكد قطعياً أن صاحب العظام تجاوز سن الثالثة والعشرين.',
+        see: 'تخيل عظمة الترقوة تتحول إلى جسر ذهبي يربط الصدر بقاعدة الجمجمة ومكتوب عليه بالخط العريض: تم اكتمال بناء الهيكل بالكامل!'
+      }
+    };
+
+    function selectBodyHotspot(age) {
+      const data = bodyData[age];
+      if (!data) return;
+
+      const titleEl = document.getElementById('bodyDetailAge');
+      const anatEl = document.getElementById('bodyDetailAnatomy');
+      const mliEl = document.getElementById('bodyDetailMli');
+      const seeEl = document.getElementById('bodyDetailSee');
+
+      if (titleEl) titleEl.textContent = data.title;
+      if (anatEl) anatEl.innerHTML = `<strong>المعيار التشريحي الإشعاعي:</strong> ${data.anatomy}`;
+      if (mliEl) mliEl.textContent = data.mli;
+      if (seeEl) seeEl.textContent = data.see;
+
+      const spots = document.querySelectorAll('.body-hotspot');
+      spots.forEach(s => s.classList.remove('selected'));
+      const activeSpot = document.getElementById(`spot-${age}`);
+      if (activeSpot) activeSpot.classList.add('selected');
+
+      playStudioAudio('click');
+    }
+
+    /* =========================================================
+       6. PATERNITY EXCLUSION SIMULATOR
+       ========================================================= */
+    function computePaternityRules() {
+      const motherAbo = document.getElementById('motherAbo').value;
+      const motherRh = document.getElementById('motherRh').value;
+      const fatherAbo = document.getElementById('fatherAbo').value;
+      const fatherRh = document.getElementById('fatherRh').value;
+
+      let possible = [];
+      let impossible = [];
+
+      // Mendelian ABO Combinations
+      if ((motherAbo === 'O' && fatherAbo === 'O')) {
+        possible = ['Group O'];
+        impossible = ['Group A', 'Group B', 'Group AB'];
+      } else if ((motherAbo === 'O' && fatherAbo === 'A') || (motherAbo === 'A' && fatherAbo === 'O')) {
+        possible = ['Group O', 'Group A'];
+        impossible = ['Group B', 'Group AB'];
+      } else if ((motherAbo === 'O' && fatherAbo === 'B') || (motherAbo === 'B' && fatherAbo === 'O')) {
+        possible = ['Group O', 'Group B'];
+        impossible = ['Group A', 'Group AB'];
+      } else if ((motherAbo === 'O' && fatherAbo === 'AB') || (motherAbo === 'AB' && fatherAbo === 'O')) {
+        possible = ['Group A', 'Group B'];
+        impossible = ['Group O (مستحيل لوالد AB)', 'Group AB (مستحيل لوالد O)'];
+      } else if (motherAbo === 'A' && fatherAbo === 'A') {
+        possible = ['Group A', 'Group O'];
+        impossible = ['Group B', 'Group AB'];
+      } else if (motherAbo === 'B' && fatherAbo === 'B') {
+        possible = ['Group B', 'Group O'];
+        impossible = ['Group A', 'Group AB'];
+      } else if ((motherAbo === 'A' && fatherAbo === 'B') || (motherAbo === 'B' && fatherAbo === 'A')) {
+        possible = ['Group O', 'Group A', 'Group B', 'Group AB'];
+        impossible = ['لا توجد فصيلة مستحيلة (جميع الفصائل الأربع واردة بيولوجياً)'];
+      } else if ((motherAbo === 'A' && fatherAbo === 'AB') || (motherAbo === 'AB' && fatherAbo === 'A')) {
+        possible = ['Group A', 'Group B', 'Group AB'];
+        impossible = ['Group O (مستحيل لوالد AB)'];
+      } else if ((motherAbo === 'B' && fatherAbo === 'AB') || (motherAbo === 'AB' && fatherAbo === 'B')) {
+        possible = ['Group A', 'Group B', 'Group AB'];
+        impossible = ['Group O (مستحيل لوالد AB)'];
+      } else if (motherAbo === 'AB' && fatherAbo === 'AB') {
+        possible = ['Group A', 'Group B', 'Group AB'];
+        impossible = ['Group O (مستحيل لأبوين كلاهما AB)'];
+      }
+
+      // Render Possible
+      const posContainer = document.getElementById('possibleBloodList');
+      if (posContainer) {
+        posContainer.innerHTML = possible.map(p => `<span class="rule-pill possible">${p}</span>`).join('');
+      }
+
+      // Render Impossible
+      const impContainer = document.getElementById('impossibleBloodList');
+      if (impContainer) {
+        impContainer.innerHTML = impossible.map(p => `<span class="rule-pill impossible">${p}</span>`).join('');
+      }
+
+      // Rh Ruling
+      const rhText = document.getElementById('rhRulingText');
+      if (rhText) {
+        if (motherRh === 'neg' && fatherRh === 'neg') {
+          rhText.innerHTML = `<strong>حكم عامل الريسوس (Rh):</strong> كلا الوالدين سالب <bdi dir="ltr">(Rh-ve)</bdi>؛ يُستبعد الأب المتنازع عليه <strong style="color: var(--error);">قطعياً وبلا أدنى شك</strong> إذا وُلد الطفل موجب الريسوس <bdi dir="ltr">(Rh+ve)</bdi>!`;
+        } else {
+          rhText.innerHTML = `<strong>حكم عامل الريسوس (Rh):</strong> وجود طرف موجب <bdi dir="ltr">(Rh+ve)</bdi> يسمح بيولوجياً بإنجاب طفل موجب أو سالب حسب الجينات السائدة والمتنحية.`;
+        }
+      }
+    }
+
+    /* =========================================================
+       7. MCQ CHALLENGE CHECKER
+       ========================================================= */
+    function checkMcq(qNum, choice, isCorrect, btnEl) {
+      const card = document.getElementById(`qCard${qNum}`);
+      if (!card) return;
+
+      const allBtns = card.querySelectorAll('.mcq-option-btn');
+      allBtns.forEach(b => {
+        b.disabled = true;
+        b.style.pointerEvents = 'none';
+      });
+
+      if (isCorrect) {
+        btnEl.classList.add('correct');
+        playStudioAudio('chime');
+      } else {
+        btnEl.classList.add('incorrect');
+        playStudioAudio('alert');
+        // highlight correct sibling
+        allBtns.forEach(b => {
+          if (b.getAttribute('onclick') && b.getAttribute('onclick').includes('true')) {
+            b.classList.add('correct');
+          }
+        });
+      }
+
+      const exp = document.getElementById(`exp${qNum}`);
+      if (exp) {
+        exp.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
